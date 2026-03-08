@@ -1,0 +1,167 @@
+"""Patch remaining English h4/section headers in index.html"""
+import re
+
+PATCHES = [
+    # Bar labels
+    ('<span class="bar-label">Conversion Optimization</span>', '<span class="bar-label">전환 최적화</span>'),
+    ('<span class="bar-label">Competitive Positioning</span>', '<span class="bar-label">경쟁 포지셔닝</span>'),
+    ('<span class="bar-label">Content &amp; Messaging</span>', '<span class="bar-label">콘텐츠 &amp; 메시지</span>'),
+    ('<span class="bar-label">SEO &amp; Discoverability</span>', '<span class="bar-label">SEO &amp; 검색 노출</span>'),
+    ('<span class="bar-label">Brand &amp; Trust</span>', '<span class="bar-label">브랜드 &amp; 신뢰</span>'),
+    ('<span class="bar-label">Growth &amp; Strategy</span>', '<span class="bar-label">성장 &amp; 전략</span>'),
+    # Copy audit h4 headers
+    ('<h4>Value Proposition</h4>', '<h4>가치 제안</h4>'),
+    ('<h4>CTA Effectiveness</h4>', '<h4>CTA 효과성</h4>'),
+    ('<h4>CTA Inventory (identified across all pages)</h4>', '<h4>CTA 목록 (전체 페이지 기준)</h4>'),
+    ('<h4>Trust Signals Near Conversion Points</h4>', '<h4>전환 지점 인근 신뢰 신호</h4>'),
+    ('<h4>Pricing Transparency</h4>', '<h4>가격 투명성</h4>'),
+    ('<h4>Header Hierarchy</h4>', '<h4>헤더 계층 구조</h4>'),
+    ('<h4>Missing SEO Opportunities</h4>', '<h4>누락된 SEO 기회</h4>'),
+    ('<h4>Differentiation Clarity</h4>', '<h4>차별화 명확성</h4>'),
+    ('<h4>Credibility Signals</h4>', '<h4>신뢰도 신호</h4>'),
+    ('<h4>Weekly Report as Growth Lever</h4>', '<h4>성장 레버로서의 주간 리포트</h4>'),
+    ('<h4>Missing Growth Loops</h4>', '<h4>누락된 성장 루프</h4>'),
+    ('<h4>Content Depth</h4>', '<h4>콘텐츠 깊이</h4>'),
+    ('<h4>Brand Voice</h4>', '<h4>브랜드 보이스</h4>'),
+    ('<h4>Copy Quality</h4>', '<h4>카피 품질</h4>'),
+    # Funnel section
+    ('<h4>Signup/Trial Process</h4>', '<h4>가입/체험 프로세스</h4>'),
+    ('<h4>Organic Search</h4>', '<h4>오가닉 검색</h4>'),
+    # CRO section headers
+    ('<h4>Value Propositions</h4>', '<h4>가치 제안들</h4>'),
+    ('<h4>Elevator Pitch (Korean, ~75 words)</h4>', '<h4>엘리베이터 피치 (한국어, ~75자)</h4>'),
+    ('<h4>Boilerplate (~120 words, English)</h4>', '<h4>공식 소개문 (~120 단어, 영문)</h4>'),
+    ('<h4>Unique Mechanism</h4>', '<h4>독자적 메커니즘</h4>'),
+    ('<h4>Differentiation</h4>', '<h4>차별화</h4>'),
+    ('<h4>Primary Archetype: The Authority</h4>', '<h4>주요 아키타입: 권위자</h4>'),
+    ('<h4>Secondary Archetype: The Innovator</h4>', '<h4>보조 아키타입: 혁신가</h4>'),
+    ('<h4>Words and Phrases Used Frequently</h4>', '<h4>자주 사용하는 단어와 표현</h4>'),
+    ('<h4>Words and Phrases to Avoid</h4>', '<h4>피해야 할 단어와 표현</h4>'),
+    ('<h4>Signature Phrases and Linguistic Patterns</h4>', '<h4>시그니처 표현 및 언어 패턴</h4>'),
+    ('<h4>Our Voice IS</h4>', '<h4>우리의 보이스</h4>'),
+    ('<h4>Audience Ownership: Korean Patent Attorneys as Primary Buyers</h4>', '<h4>오디언스 소유권: 한국 변리사를 주요 구매자로</h4>'),
+    ('<h4>Steal-Worthy Tactics</h4>', '<h4>참고할 만한 경쟁사 전술</h4>'),
+    ('<h4>Differentiation Strategy</h4>', '<h4>차별화 전략</h4>'),
+    ('<h4>Tanalysis Competitive Moat</h4>', '<h4>타날리시스 경쟁 해자</h4>'),
+    ('<h4>Opportunities for Tanalysis</h4>', '<h4>타날리시스의 기회</h4>'),
+    ('<h4>SWOT (from Tanalysis perspective)</h4>', '<h4>SWOT 분석 (타날리시스 관점)</h4>'),
+    # SEO section
+    ('<h4>Naver SEO checklist:</h4>', '<h4>네이버 SEO 체크리스트:</h4>'),
+    ('<h4>Missing local signals:</h4>', '<h4>누락된 로컬 신호:</h4>'),
+    ('<h4>Heading Structure (Actual Rendered DOM)</h4>', '<h4>헤딩 구조 (실제 렌더링 DOM)</h4>'),
+    ('<h4>Internal Linking</h4>', '<h4>내부 링크</h4>'),
+    ('<h4>Top SEO Content Gaps</h4>', '<h4>주요 SEO 콘텐츠 격차</h4>'),
+    ('<h4>Keyword Opportunities</h4>', '<h4>키워드 기회</h4>'),
+    ('<h4>SEO Health Checklist</h4>', '<h4>SEO 상태 체크리스트</h4>'),
+    ('<h4>Niche (Under 100K posts)</h4>', '<h4>틈새 (10만 게시물 미만)</h4>'),
+    ('<h4>Ongoing Monitoring Checklist</h4>', '<h4>지속적 모니터링 체크리스트</h4>'),
+    ('<h4>Competitive Response Playbook</h4>', '<h4>경쟁사 대응 플레이북</h4>'),
+    ('<h4>Warm DM Strategy (LinkedIn)</h4>', '<h4>따뜻한 DM 전략 (링크드인)</h4>'),
+    ('<h4>Response Strategy</h4>', '<h4>대응 전략</h4>'),
+    ('<h4>Repurposing Schedule (2-Week Cycle)</h4>', '<h4>콘텐츠 재활용 일정 (2주 주기)</h4>'),
+    ('<h4>Optimal Posting Times (KST)</h4>', '<h4>최적 게시 시간 (KST)</h4>'),
+    ('<h4>Tagging Strategy</h4>', '<h4>태깅 전략</h4>'),
+    ('<h4>Primary KPIs to Track Weekly</h4>', '<h4>주간 추적 주요 KPI</h4>'),
+    ('<h4>Round 1: Subject Lines (Weeks 1-4)</h4>', '<h4>라운드 1: 제목 라인 (1-4주)</h4>'),
+    ('<h4>Round 2: CTA Copy (Weeks 5-8)</h4>', '<h4>라운드 2: CTA 카피 (5-8주)</h4>'),
+    ('<h4>Round 4: Send Timing</h4>', '<h4>라운드 4: 발송 타이밍</h4>'),
+    ('<h4>Round 5: Plain Text vs HTML</h4>', '<h4>라운드 5: 일반 텍스트 vs HTML</h4>'),
+    ('<h4>Behavioral Triggers</h4>', '<h4>행동 트리거</h4>'),
+    ('<h4>Lead Gen Form Fields</h4>', '<h4>리드 생성 폼 필드</h4>'),
+    # Executive report section headings
+    ('<h4>What Is Working</h4>', '<h4>잘 작동하는 것</h4>'),
+    ('<h4>Paid Advertising</h4>', '<h4>유료 광고</h4>'),
+    ('<h4>NEW QUICK WIN: Move Logo Strip Above Fold</h4>', '<h4>새로운 빠른 성과: 로고 스트립을 폴드 위로 이동</h4>'),
+    ('<h4>Brand Voice: What To Keep, What To Fix</h4>', '<h4>브랜드 보이스: 유지할 것과 수정할 것</h4>'),
+    ('<h4>Appendix A: Methodology</h4>', '<h4>부록 A: 방법론</h4>'),
+    ('<h4>Appendix C: Glossary</h4>', '<h4>부록 C: 용어 해설</h4>'),
+    ('<h4>Appendix D: Key Contact Information</h4>', '<h4>부록 D: 주요 연락처 정보</h4>'),
+    ('<h4>Tanalysis Competitive Moat</h4>', '<h4>타날리시스 경쟁 해자</h4>'),
+    # Ad section h4
+    ('<h4>Negative Keywords</h4>', '<h4>제외 키워드</h4>'),
+    # Section 1-6 headers in CRO
+    ('<h4>Section 1: Hero / Above the Fold</h4>', '<h4>섹션 1: 히어로 / 폴드 위</h4>'),
+    ('<h4>Section 3: Differentiation / Why Tanalysis</h4>', '<h4>섹션 3: 차별화 / 타날리시스를 선택해야 하는 이유</h4>'),
+    ('<h4>Section 4: Comparison Table Framing</h4>', '<h4>섹션 4: 비교 테이블 프레이밍</h4>'),
+    ('<h4>Section 6: Weekly Report Hero</h4>', '<h4>섹션 6: 주간 리포트 히어로</h4>'),
+    # Strong/p section labels
+    ('<p><strong>Value Proposition</strong></p>', '<p><strong>가치 제안</strong></p>'),
+    ('<strong>Value Proposition</strong>6/10', '<strong>가치 제안</strong>6/10'),
+    ('<strong>Strong Position</strong>', '<strong>강점 포지션</strong>'),
+    ('<strong>Signup/Trial Process</strong>', '<strong>가입/체험 프로세스</strong>'),
+    ('<strong>Free Tier Active</strong>', '<strong>무료 티어 활성</strong>'),
+    ('<strong>Weekly Report as Growth Lever</strong>', '<strong>성장 레버로서의 주간 리포트</strong>'),
+    ('<strong>Organic Search</strong>', '<strong>오가닉 검색</strong>'),
+    ('<strong>Hero (above fold)</strong>', '<strong>히어로 (폴드 위)</strong>'),
+    ('<strong>Primary CTA Prominence</strong>', '<strong>주요 CTA 가시성</strong>'),
+    ('<strong>Naver SEO checklist:</strong>', '<strong>네이버 SEO 체크리스트:</strong>'),
+    ('<strong>Missing local signals:</strong>', '<strong>누락된 로컬 신호:</strong>'),
+    ('<strong>Voice Evolution Opportunities</strong>', '<strong>보이스 발전 기회</strong>'),
+    ('<strong>Competitive Response Playbook</strong>', '<strong>경쟁사 대응 플레이북</strong>'),
+    ('<strong>Ongoing Monitoring Checklist</strong>', '<strong>지속적 모니터링 체크리스트</strong>'),
+    # h3 headers that may still be English
+    ('<h3>Value Proposition</h3>', '<h3>가치 제안</h3>'),
+    ('<h3>Signup/Trial Process</h3>', '<h3>가입/체험 프로세스</h3>'),
+    ('<h3>Organic Search</h3>', '<h3>오가닉 검색</h3>'),
+    ('<h3>Strong Position</h3>', '<h3>강점 포지션</h3>'),
+    ('<h3>Tanalysis Competitive Moat</h3>', '<h3>타날리시스 경쟁 해자</h3>'),
+    ('<h3>Differentiation Strategy</h3>', '<h3>차별화 전략</h3>'),
+    ('<h3>Steal-Worthy Tactics</h3>', '<h3>참고할 만한 경쟁사 전술</h3>'),
+    ('<h3>SWOT (from Tanalysis perspective)</h3>', '<h3>SWOT 분석 (타날리시스 관점)</h3>'),
+    ('<h3>Opportunities for Tanalysis</h3>', '<h3>타날리시스의 기회</h3>'),
+    ('<h3>Keyword Opportunities</h3>', '<h3>키워드 기회</h3>'),
+    ('<h3>Niche (Under 100K posts)</h3>', '<h3>틈새 (10만 게시물 미만)</h3>'),
+    ('<h3>Optimal Posting Times (KST)</h3>', '<h3>최적 게시 시간 (KST)</h3>'),
+    ('<h3>Response Strategy</h3>', '<h3>대응 전략</h3>'),
+    ('<h3>Warm DM Strategy (LinkedIn)</h3>', '<h3>따뜻한 DM 전략 (링크드인)</h3>'),
+    ('<h3>Repurposing Schedule (2-Week Cycle)</h3>', '<h3>콘텐츠 재활용 일정 (2주 주기)</h3>'),
+    ('<h3>Tagging Strategy</h3>', '<h3>태깅 전략</h3>'),
+    ('<h3>Primary KPIs to Track Weekly</h3>', '<h3>주간 추적 주요 KPI</h3>'),
+    ('<h3>Behavioral Triggers</h3>', '<h3>행동 트리거</h3>'),
+    ('<h3>Lead Gen Form Fields</h3>', '<h3>리드 생성 폼 필드</h3>'),
+    ('<h3>What Is Working</h3>', '<h3>잘 작동하는 것</h3>'),
+    ('<h3>Paid Advertising</h3>', '<h3>유료 광고</h3>'),
+    ('<h3>Brand Voice: What To Keep, What To Fix</h3>', '<h3>브랜드 보이스: 유지할 것과 수정할 것</h3>'),
+    ('<h3>Appendix A: Methodology</h3>', '<h3>부록 A: 방법론</h3>'),
+    ('<h3>Appendix C: Glossary</h3>', '<h3>부록 C: 용어 해설</h3>'),
+    ('<h3>Appendix D: Key Contact Information</h3>', '<h3>부록 D: 주요 연락처 정보</h3>'),
+    # Summary tags
+    ('<summary>Value Proposition</summary>', '<summary>가치 제안</summary>'),
+    ('<summary>Signup/Trial Process</summary>', '<summary>가입/체험 프로세스</summary>'),
+    ('<summary>Strong Position</summary>', '<summary>강점 포지션</summary>'),
+    ('<summary>Organic Search</summary>', '<summary>오가닉 검색</summary>'),
+    ('<summary>Tanalysis Competitive Moat</summary>', '<summary>타날리시스 경쟁 해자</summary>'),
+    ('<summary>Differentiation Strategy</summary>', '<summary>차별화 전략</summary>'),
+    ('<summary>Steal-Worthy Tactics</summary>', '<summary>참고할 만한 경쟁사 전술</summary>'),
+    ('<summary>Opportunities for Tanalysis</summary>', '<summary>타날리시스의 기회</summary>'),
+    ('<summary>Keyword Opportunities</summary>', '<summary>키워드 기회</summary>'),
+    ('<summary>Ongoing Monitoring Checklist</summary>', '<summary>지속적 모니터링 체크리스트</summary>'),
+    ('<summary>Competitive Response Playbook</summary>', '<summary>경쟁사 대응 플레이북</summary>'),
+    ('<summary>Voice Evolution Opportunities</summary>', '<summary>보이스 발전 기회</summary>'),
+    # Table header cells still in English
+    ('>Value Proposition<', '>가치 제안<'),
+    ('>Differentiation Clarity<', '>차별화 명확성<'),
+    ('>Credibility Signals<', '>신뢰도 신호<'),
+    ('>Pricing Transparency<', '>가격 투명성<'),
+    ('>Conversion Optimization<', '>전환 최적화<'),
+    ('>Competitive Positioning<', '>경쟁 포지셔닝<'),
+    ('>Weekly Report as Growth Lever<', '>성장 레버로서의 주간 리포트<'),
+    ('>Missing Growth Loops<', '>누락된 성장 루프<'),
+    ('>Strong Position<', '>강점 포지션<'),
+    ('>Signup/Trial Process<', '>가입/체험 프로세스<'),
+]
+
+filepath = r'C:\Users\joons\work\marketing\landing-page\reports-dashboard\index.html'
+with open(filepath, encoding='utf-8') as f:
+    content = f.read()
+
+applied = 0
+for en, ko in PATCHES:
+    if en in content:
+        content = content.replace(en, ko)
+        applied += 1
+
+with open(filepath, 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print(f'Applied {applied}/{len(PATCHES)} patches')
