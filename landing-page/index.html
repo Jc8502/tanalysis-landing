@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>심사관 수준의 특허 AI — 재현율 85%, 타사 대비 4배 | 타날리시스</title>
+  <meta name="description" content="특허청 심사 데이터 8천만 건으로 학습한 유일한 특허 AI. 재현율 85%(타사 대비 4배), 분류 정확도 90%+, 30초 내 결과. 변리사가 직접 만들었습니다." />
+
+  <!-- Fonts: exact match to tanalysis.co.kr -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /*  ─────────────────────────────────────────────────────────
+        TANALYSIS DESIGN SYSTEM v2 — pixel-matched via Playwright
+        Source: DESIGN-SYSTEM.json  (92 KB, 3034 lines)
+        ───────────────────────────────────────────────────────── */
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── DESIGN TOKENS ──
+       Every value below is extracted directly from computed styles.
+       Comments show (rgb value · hex · element source · usage count).
+    */
+    :root {
+      /* brand */
+      --brand:            #6541f2;   /* rgb(101,65,242)  A bg · ×10 */
+      --brand-deep:       #312080;   /* rgb(49,33,128)   gradient start */
+      --brand-light:      #8b6cff;   /* rgb(139,108,255) SPAN/DIV */
+      --brand-lavender:   #c29ef0;   /* rgb(194,158,240) gradient end */
+      --brand-muted:      #5d50ae;   /* rgb(93,80,174)   BUTTON bg — action btn */
+
+      /* text */
+      --t-primary:        #0e0e0e;   /* rgb(14,14,14)    P */
+      --t-black:          #000000;   /* rgb(0,0,0)       H1 */
+      --t-secondary:      #333333;   /* rgb(51,51,51)    P */
+      --t-muted:          rgba(84,82,94,0.83); /* nav links, body copy */
+      --t-subtle:         #a19fad;   /* rgb(161,159,173) P */
+      --t-light:          #73727a;   /* rgb(115,114,122) footer, svg */
+      --t-dim:            #666666;   /* rgb(102,102,102) P */
+      --t-input:          #545454;   /* rgb(84,84,84)    INPUT */
+      --t-pink:           #ff9e9e;   /* rgb(255,158,158) H2 accent */
+      --t-purple-light:   #9f80da;   /* rgb(159,128,218) svg */
+      --t-ghost:          #b9b8bf;   /* rgb(185,184,191) svg */
+      --t-faint:          #cecdd4;   /* rgb(206,205,212) P */
+      --t-purple-soft:    #fbf5ff;   /* rgb(251,245,255) P */
+
+      /* backgrounds */
+      --bg-white:         #ffffff;
+      --bg-glass:         rgba(255,255,255,0.5);   /* A bg · card bg */
+      --bg-glass-heavy:   rgba(255,255,255,0.8);   /* NAV bg */
+      --bg-glass-ghost:   rgba(255,255,255,0.04);  /* dark-section card */
+      --bg-light:         #f0f1f5;   /* rgb(240,241,245) INPUT bg */
+      --bg-subtle:        #f7f7f8;   /* rgb(247,247,248) DIV */
+      --bg-hover:         rgba(112,115,124,0.05);  /* BUTTON tag bg */
+      --bg-hover-strong:  rgba(112,115,124,0.08);  /* DIV */
+      --bg-dark:          #121822;   /* rgb(18,24,34)    SECTION dark */
+      --bg-red:           #fde8e8;   /* rgb(253,232,232) DIV */
+      --bg-blue:          #e0e7ff;   /* rgb(224,231,255) DIV */
+      --bg-green:         #dcfce7;   /* rgb(220,252,231) DIV */
+
+      /* accent text */
+      --red:              #d93025;   /* rgb(217,48,37)   */
+      --red-dark:         #b91c1c;   /* rgb(185,28,28)   */
+      --blue:             #1d4ed8;   /* rgb(29,78,216)   */
+      --blue-dark:        #1e40af;   /* rgb(30,64,175)   */
+      --green:            #15803d;   /* rgb(21,128,61)   */
+      --green-dark:       #166534;   /* rgb(22,101,52)   */
+
+      /* borders — only 2 unique active border colors */
+      --border:           #e3e5eb;   /* rgb(227,229,235) — primary */
+      --border-subtle:    #f7f7f8;   /* rgb(247,247,248) */
+
+      /* shadows (count=usage frequency) */
+      --shadow-glow:      rgba(180,156,197,0.08) 0px 0px 16px 4px;  /* ×6 */
+      --shadow-glow-strong: rgba(180,156,197,0.1) 0px 0px 16px 4px; /* ×1 */
+      --shadow-card:      rgba(0,0,0,0.05) 0px 4px 20px 0px;        /* ×1 */
+
+      /* radii (value · count) */
+      --r-6:   6px;    /* ×3 */
+      --r-8:   8px;    /* ×2 — action btn, input */
+      --r-9:   9px;    /* ×2 */
+      --r-10:  10px;   /* ×3 */
+      --r-11:  11px;   /* ×10 — primary btn, cards */
+      --r-12:  12px;   /* ×11 — most used radius */
+      --r-15:  15px;   /* ×3 — tags */
+      --r-20:  20px;   /* ×6 — large cards */
+      --r-30:  30px;   /* ×1 */
+      --r-pill: 100px; /* ×2 — pill buttons */
+      --r-circle: 50%; /* ×4 */
+
+      /* gradients — extracted verbatim */
+      --g-brand: linear-gradient(140deg, rgb(49,33,128) 0%, rgb(101,65,242) 52%, rgb(194,158,240) 100%);
+      --g-brand-flat: linear-gradient(140deg, rgb(101,65,242) 0%, rgb(101,65,242) 50%, rgb(101,65,242) 100%);
+      --g-glass: linear-gradient(140deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.5) 100%);
+      --g-soft-purple: linear-gradient(140deg, rgba(204,205,255,0.7) 4%, rgba(216,202,247,0.7) 60.07%, rgba(158,141,226,0.7) 103%);
+      --g-page-fade: linear-gradient(rgb(255,255,255) 39.7%, rgb(250,250,250) 73.4%);
+      --g-card-right: linear-gradient(107deg, rgb(255,255,255) 0%, rgba(204,205,255,0.7) 100%);
+      --g-side-fade: linear-gradient(90deg, rgb(249,250,251) 0%, rgba(247,240,250,0) 100%);
+      --g-section-up: linear-gradient(rgb(249,250,251) 0%, rgb(255,255,255) 62%);
+      --g-overlay-fade: linear-gradient(rgba(255,255,255,0.92) 34.23%, rgba(247,247,247,0) 100%);
+
+      /* radial glows */
+      --glow-purple: radial-gradient(50% 50%, rgba(209,211,255,0.5) 49.04%, rgba(255,255,255,0) 100%);
+      --glow-blue: radial-gradient(50% 50%, rgba(233,249,255,0.5) 49.04%, rgba(255,255,255,0) 100%);
+      --glow-yellow: radial-gradient(50% 50%, rgba(255,252,235,0.5) 49.04%, rgba(255,255,255,0) 100%);
+      --glow-deep: radial-gradient(50% 50%, rgba(42,0,255,0.5) 2.7%, rgba(209,211,255,0.5) 49.04%, rgba(255,255,255,0) 100%);
+      --glow-deep-dark: radial-gradient(50% 50%, rgba(42,0,255,0.5) 2.7%, rgba(145,151,255,0.5) 49.04%, rgba(0,0,0,0) 100%);
+
+      /* font stack — Pretendard Variable is the primary font on tanalysis.co.kr */
+      --f-main: "Pretendard Variable", "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --f-kr: "Noto Sans KR", sans-serif;
+
+      /* spacing system (from extracted padding/gap sets) */
+      --sp-4: 4px;
+      --sp-8: 8px;
+      --sp-10: 10px;
+      --sp-12: 12px;
+      --sp-16: 16px;
+      --sp-18: 18px;
+      --sp-20: 20px;
+      --sp-24: 24px;
+      --sp-28: 28px;
+      --sp-32: 32px;
+      --sp-40: 40px;
+      --sp-48: 48px;
+      --sp-56: 56px;
+      --sp-60: 60px;
+      --sp-80: 80px;
+      --sp-100: 100px;
+    }
+
+    /* ── KEYFRAMES — extracted from page ── */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes buttonPop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    /* ── BASE ── */
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--f-main);
+      font-size: 16px;
+      line-height: normal;
+      color: var(--t-black);
+      background: var(--bg-white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img, svg { display: block; max-width: 100%; }
+    ul, ol { list-style: none; }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 var(--sp-40);
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       URGENCY BANNER — government voucher (3/31 deadline)
+       Audit Quick Win #8: highest priority time-sensitive CTA
+    ────────────────────────────────────────────────────────── */
+    .banner {
+      background: var(--g-brand);
+      color: #fff;
+      text-align: center;
+      padding: 10px var(--sp-24);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.26px;
+      line-height: 20.8px;
+    }
+    .banner strong { font-weight: 900; }
+    .banner a {
+      color: var(--brand-lavender);
+      text-decoration: underline;
+      margin-left: var(--sp-8);
+      font-weight: 700;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       NAVIGATION
+       Extracted: bg rgba(255,255,255,0.8) · backdrop blur(10px) · h64
+       padding: 20px · position sticky · z-index 10
+       Nav links: 16px/1000/-0.16px/rgba(84,82,94,0.83) (inside <p>)
+       Buttons: 12px 18px padding · 11px radius · glow shadow
+    ────────────────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      height: 64px;
+      background: var(--bg-glass-heavy);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+    }
+    .nav-inner {
+      max-width: 1440px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 var(--sp-20);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-8);
+    }
+    .nav-logo svg { width: 28px; height: 32px; }
+    .nav-logo-text {
+      font-family: var(--f-main);
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--brand);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-32);
+    }
+    .nav-links a {
+      font-family: var(--f-main);
+      font-size: 16px;
+      font-weight: 1000;
+      line-height: 19.2px;
+      letter-spacing: -0.16px;
+      color: var(--t-muted);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--t-primary); }
+    .nav-ctas {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-12);
+    }
+    /* Ghost nav button — extracted verbatim */
+    .btn-nav-ghost {
+      background: var(--bg-glass);
+      background-image: var(--g-glass);
+      border-radius: var(--r-11);
+      padding: var(--sp-12) var(--sp-18);
+      box-shadow: var(--shadow-glow);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-12);
+      border: none;
+    }
+    .btn-nav-ghost span {
+      font-family: var(--f-main);
+      font-size: 16px;
+      font-weight: 1000;
+      line-height: 22px;
+      letter-spacing: -0.32px;
+      color: var(--t-primary);
+    }
+    .btn-nav-ghost:hover { background: #fff; }
+    /* Primary nav CTA — extracted verbatim */
+    .btn-nav-primary {
+      background: var(--brand);
+      background-image: var(--g-brand-flat);
+      border-radius: var(--r-11);
+      padding: var(--sp-12) var(--sp-18);
+      box-shadow: var(--shadow-glow);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-12);
+      border: none;
+    }
+    .btn-nav-primary span {
+      font-family: var(--f-main);
+      font-size: 16px;
+      font-weight: 1000;
+      line-height: 22px;
+      letter-spacing: -0.32px;
+      color: #fff;
+    }
+    .btn-nav-primary:hover { background-image: var(--g-brand); }
+
+    /* ──────────────────────────────────────────────────────────
+       HERO
+       H1: Pretendard Variable · 48px · weight 1000 · lh 57.6px · ls -1.14px · center
+       Sub P: 16px · weight 1000 · lh 24.8px · ls -0.32px · rgba(84,82,94,0.83)
+       Hero CTAs: 12px 18px padding (nav size) or 0 0 0 18px (gradient btn)
+       Gradient bg: radial glow overlays
+       Animations: fadeIn 0.5s ease-out, buttonPop 1.5s ease-in-out
+    ────────────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: var(--sp-100) 0 var(--sp-80);
+      background: var(--bg-white);
+    }
+    /* Radial glow overlays — extracted */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -180px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 700px;
+      background: var(--glow-deep);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -100px; right: -200px;
+      width: 600px; height: 600px;
+      background: var(--glow-yellow);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--sp-40);
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-8);
+      background: rgba(101,65,242,0.06);
+      border: 1px solid rgba(101,65,242,0.12);
+      border-radius: var(--r-pill);
+      padding: var(--sp-8) var(--sp-16);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brand);
+      letter-spacing: -0.26px;
+      line-height: 20.8px;
+      margin-bottom: var(--sp-24);
+      animation: fadeIn 0.5s ease-out;
+    }
+    .hero h1 {
+      font-family: var(--f-main);
+      font-size: 48px;
+      font-weight: 1000;
+      line-height: 57.6px;
+      letter-spacing: -1.14px;
+      color: var(--t-black);
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto var(--sp-20);
+      animation: fadeIn 0.5s ease-out;
+    }
+    .hero h1 .accent {
+      background: var(--g-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-family: var(--f-main);
+      font-size: 16px;
+      font-weight: 1000;
+      line-height: 24.8px;
+      letter-spacing: -0.32px;
+      color: var(--t-muted);
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto var(--sp-40);
+      animation: fadeIn 0.5s ease-out;
+    }
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-12);
+      flex-wrap: wrap;
+      margin-bottom: var(--sp-60);
+      animation: fadeIn 0.5s ease-out;
+    }
+    /* Hero primary CTA — brand gradient bg-image, 11px radius */
+    .btn-hero-primary {
+      background-image: var(--g-brand);
+      background-color: var(--brand);
+      border-radius: var(--r-11);
+      padding: 0 0 0 var(--sp-18);
+      box-shadow: var(--shadow-glow);
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-12);
+      height: 48px;
+      transition: all 0.2s;
+      animation: buttonPop 1.5s ease-in-out;
+    }
+    .btn-hero-primary span {
+      font-family: var(--f-main);
+      font-size: 16px;
+      font-weight: 1000;
+      line-height: 22px;
+      letter-spacing: -0.32px;
+      color: #fff;
+    }
+    .btn-hero-primary .arrow {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .btn-hero-primary:hover { opacity: 0.92; transform: translateY(-1px); }
+    /* Hero secondary — glass bg */
+    .btn-hero-secondary {
+      background: var(--bg-glass);
+      background-image: var(--g-glass);
+      border-radius: var(--r-11);
+      padding: var(--sp-12) var(--sp-18);
+      box-shadow: var(--shadow-glow);
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-12);
+      height: 48px;
+      transition: all 0.2s;
+    }
+    .btn-hero-secondary span {
+      font-family: var(--f-main);
+      font-size: 16px;
+      font-weight: 1000;
+      line-height: 22px;
+      letter-spacing: -0.32px;
+      color: var(--t-primary);
+    }
+    .btn-hero-secondary:hover { background: #fff; }
+
+    /* Stat strip */
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeIn 0.5s ease-out;
+    }
+    .hero-stat {
+      padding: 0 var(--sp-32);
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-family: var(--f-main);
+      font-size: 32px;
+      font-weight: 1000;
+      letter-spacing: -1.28px;
+      line-height: 44.8px;
+      color: var(--brand);
+      margin-bottom: 2px;
+    }
+    .hero-stat-label {
+      font-family: var(--f-main);
+      font-size: 12px;
+      font-weight: 1000;
+      letter-spacing: 0.24px;
+      line-height: 16.8px;
+      color: var(--t-light);
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       SEARCH DEMO — extracted input field
+       bg: #f0f1f5 · border: 1px solid #e3e5eb · radius: 8px
+       padding: 16px 20px · font: 13px · color: #545454 · w516 h51
+    ────────────────────────────────────────────────────────── */
+    .search-demo {
+      background: var(--bg-white);
+      padding: 0 0 var(--sp-80);
+    }
+    .search-demo-inner {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 0 var(--sp-40);
+    }
+    .search-demo-box {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-12);
+      padding: var(--sp-20);
+      box-shadow: var(--shadow-card);
+    }
+    .search-demo-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--t-secondary);
+      letter-spacing: -0.26px;
+      margin-bottom: var(--sp-10);
+    }
+    .search-demo-input {
+      width: 100%;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: var(--r-8);
+      padding: var(--sp-16) var(--sp-20);
+      font-family: var(--f-main);
+      font-size: 13px;
+      color: var(--t-input);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .search-demo-input::placeholder { color: var(--t-ghost); }
+    .search-demo-input:focus { border-color: var(--brand); }
+    .search-demo-btn {
+      width: 100%;
+      margin-top: var(--sp-12);
+      background: var(--brand-muted);
+      border: none;
+      border-radius: var(--r-8);
+      padding: var(--sp-12) 0;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .search-demo-btn:hover { background: var(--brand); }
+
+    /* ──────────────────────────────────────────────────────────
+       TRUST BAR
+    ────────────────────────────────────────────────────────── */
+    .trust-bar {
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: var(--sp-20) var(--sp-40);
+    }
+    .trust-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-40);
+      flex-wrap: wrap;
+    }
+    .trust-label {
+      font-size: 12px;
+      font-weight: 1000;
+      color: var(--t-ghost);
+      letter-spacing: 0.24px;
+      line-height: 16.8px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-8);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--t-secondary);
+      letter-spacing: -0.26px;
+    }
+    .trust-dot {
+      width: 6px; height: 6px;
+      border-radius: var(--r-circle);
+      background: var(--brand);
+      flex-shrink: 0;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       SECTIONS — shared styles
+       Section padding: 80px (extracted)
+    ────────────────────────────────────────────────────────── */
+    section { padding: var(--sp-80) 0; }
+    .section-eyebrow {
+      font-family: var(--f-main);
+      font-size: 12px;
+      font-weight: 1000;
+      letter-spacing: 0.24px;
+      line-height: 16.8px;
+      color: var(--brand);
+      text-transform: uppercase;
+      margin-bottom: var(--sp-12);
+    }
+    .section-title {
+      font-family: var(--f-main);
+      font-size: 48px;
+      font-weight: 1000;
+      line-height: 57.6px;
+      letter-spacing: -1.14px;
+      color: var(--t-black);
+      margin-bottom: var(--sp-16);
+    }
+    .section-sub {
+      font-family: var(--f-main);
+      font-size: 16px;
+      font-weight: 1000;
+      line-height: 24.8px;
+      letter-spacing: -0.32px;
+      color: var(--t-muted);
+      max-width: 560px;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       COMPARISON TABLE — Before / After Tanalysis
+       Moved to section #2 per audit recommendation
+       Uses blue/green/red status color accents
+    ────────────────────────────────────────────────────────── */
+    .comparison { background: var(--g-section-up); }
+    .comparison-header { text-align: center; margin-bottom: var(--sp-48); }
+    .comparison-wrap {
+      overflow-x: auto;
+      border-radius: var(--r-20);
+      box-shadow: var(--shadow-card);
+    }
+    .tbl-compare {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-white);
+    }
+    .tbl-compare thead th {
+      padding: var(--sp-20) var(--sp-24);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+      text-align: left;
+      border-bottom: 2px solid var(--border);
+    }
+    .tbl-compare thead th:first-child {
+      font-weight: 700;
+      color: var(--t-muted);
+      width: 160px;
+    }
+    .tbl-compare thead .col-before { background: var(--bg-red); color: var(--red); }
+    .tbl-compare thead .col-after { background: rgba(101,65,242,0.06); color: var(--brand); }
+    .tbl-compare tbody tr { border-bottom: 1px solid var(--border); transition: background 0.2s; }
+    .tbl-compare tbody tr:last-child { border-bottom: none; }
+    .tbl-compare tbody tr:hover { background: var(--bg-subtle); }
+    .tbl-compare tbody td {
+      padding: var(--sp-16) var(--sp-24);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--t-secondary);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .tbl-compare tbody td:first-child {
+      font-weight: 900;
+      font-size: 13px;
+      color: var(--t-primary);
+      white-space: nowrap;
+    }
+    .tbl-compare .td-before { color: var(--red-dark); }
+    .tbl-compare .td-after { color: var(--brand); font-weight: 700; }
+    .tbl-compare .td-after strong { font-weight: 900; }
+
+    /* ──────────────────────────────────────────────────────────
+       FEATURE CARDS — glass cards
+       bg: rgba(255,255,255,0.5) · radius: 11px · padding: 24px
+       shadow-glow on hover · gradient overlay (card-right)
+       H3 card titles: 17px/1000/-0.34px
+       Body: 16px/1000/24.8px/-0.32px/rgba(84,82,94,0.83)
+       Tags: bg rgba(112,115,124,0.05) · 15px radius · 4px 12px 4px 8px
+    ────────────────────────────────────────────────────────── */
+    .features { background: var(--bg-white); }
+    .features-header { text-align: center; margin-bottom: var(--sp-56); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-20);
+    }
+    .f-card {
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      border-radius: var(--r-11);
+      padding: var(--sp-28) var(--sp-24);
+      box-shadow: none;
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .f-card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 60%; height: 100%;
+      background: var(--g-card-right);
+      opacity: 0.25;
+      pointer-events: none;
+    }
+    .f-card:hover {
+      border-color: rgba(101,65,242,0.25);
+      box-shadow: rgba(101,65,242,0.08) 0px 8px 32px;
+      transform: translateY(-2px);
+    }
+    .f-card-icon {
+      width: 40px; height: 40px;
+      background: var(--g-brand);
+      border-radius: var(--r-10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: var(--sp-16);
+    }
+    .f-card-title {
+      font-family: var(--f-main);
+      font-size: 17px;
+      font-weight: 1000;
+      line-height: 23.8px;
+      letter-spacing: -0.34px;
+      color: var(--t-black);
+      margin-bottom: var(--sp-8);
+    }
+    .f-card-body {
+      font-family: var(--f-main);
+      font-size: 16px;
+      font-weight: 1000;
+      line-height: 24.8px;
+      letter-spacing: -0.32px;
+      color: var(--t-muted);
+    }
+    .f-card-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-4);
+      background: var(--bg-hover);
+      border-radius: var(--r-15);
+      padding: var(--sp-4) var(--sp-12) var(--sp-4) var(--sp-8);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--brand);
+      margin-top: var(--sp-16);
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       STATS — dark navy section
+       bg: #121822 · radial glow overlays
+       H3 stats: Noto Sans KR · 32px · 700 · lh 44.8px · ls -1.28px
+    ────────────────────────────────────────────────────────── */
+    .stats-section {
+      background: var(--bg-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .stats-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 600px;
+      background: var(--glow-deep-dark);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .stats-header {
+      text-align: center;
+      margin-bottom: var(--sp-56);
+      position: relative;
+      z-index: 1;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-20);
+      position: relative;
+      z-index: 1;
+    }
+    .s-card {
+      background: var(--bg-glass-ghost);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--r-12);
+      padding: var(--sp-32) var(--sp-24);
+      text-align: center;
+    }
+    .s-card-num {
+      font-family: var(--f-kr);
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -1.44px;
+      line-height: 1;
+      margin-bottom: var(--sp-8);
+      background: linear-gradient(140deg, #fff 0%, var(--brand-lavender) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .s-card-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: -0.2px;
+    }
+    .s-card-note {
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.3);
+      margin-top: var(--sp-4);
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       WEEKLY REPORT — secondary product CTA
+       bg: soft purple gradient (extracted)
+       Audit: "Most strategically interesting product — deserves
+       co-equal homepage placement"
+    ────────────────────────────────────────────────────────── */
+    .weekly {
+      background: var(--g-soft-purple);
+      border-top: 1px solid rgba(101,65,242,0.08);
+      border-bottom: 1px solid rgba(101,65,242,0.08);
+    }
+    .weekly-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--sp-80) var(--sp-40);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-56);
+      align-items: center;
+    }
+    .weekly-steps {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-16);
+      margin-top: var(--sp-32);
+    }
+    .weekly-step {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-16);
+    }
+    .weekly-step-num {
+      width: 28px; height: 28px;
+      background: var(--brand);
+      border-radius: var(--r-circle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .weekly-step-text {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--t-secondary);
+      line-height: 1.6;
+      letter-spacing: -0.2px;
+      padding-top: 3px;
+    }
+    .weekly-step-text strong { font-weight: 900; color: var(--t-primary); }
+    .weekly-ctas {
+      display: flex;
+      gap: var(--sp-12);
+      margin-top: var(--sp-32);
+      flex-wrap: wrap;
+    }
+    /* Action button — extracted bg: #5d50ae, 8px radius, 15px/500 white */
+    .btn-action {
+      background: var(--brand-muted);
+      border: none;
+      border-radius: var(--r-8);
+      padding: var(--sp-12) var(--sp-24);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-8);
+    }
+    .btn-action:hover { background: var(--brand); }
+    /* Ghost pill — bg rgba(112,115,124,0.05), 100px radius, 10px 12px 10px 14px */
+    .btn-pill {
+      background: var(--bg-hover);
+      border: none;
+      border-radius: var(--r-pill);
+      padding: var(--sp-10) var(--sp-12) var(--sp-10) 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--t-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-6, 6px);
+    }
+    .btn-pill:hover { background: var(--bg-hover-strong); color: var(--brand); }
+
+    /* Weekly report mock card */
+    .w-card {
+      background: var(--bg-white);
+      border-radius: var(--r-20);
+      padding: var(--sp-28);
+      box-shadow: rgba(101,65,242,0.12) 0px 8px 40px;
+      border: 1px solid rgba(101,65,242,0.08);
+    }
+    .w-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--sp-20);
+      padding-bottom: var(--sp-16);
+      border-bottom: 1px solid var(--border);
+    }
+    .w-card-title {
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--t-primary);
+      letter-spacing: -0.3px;
+    }
+    .w-card-badge {
+      background: rgba(101,65,242,0.08);
+      color: var(--brand);
+      border-radius: var(--r-pill);
+      padding: var(--sp-4) var(--sp-10);
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .w-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--sp-10) 0;
+      border-bottom: 1px solid var(--bg-light);
+    }
+    .w-row:last-of-type { border-bottom: none; }
+    .w-company { font-size: 13px; font-weight: 900; color: var(--t-primary); }
+    .w-detail { font-size: 12px; font-weight: 400; color: var(--t-muted); margin-top: 2px; }
+    .w-signal {
+      font-size: 11px;
+      font-weight: 900;
+      border-radius: var(--r-6);
+      padding: 3px var(--sp-8);
+      white-space: nowrap;
+    }
+    .w-signal.up { background: var(--bg-blue); color: var(--blue); }
+    .w-signal.warn { background: var(--bg-red); color: var(--red); }
+    .w-signal.ok { background: var(--bg-green); color: var(--green); }
+    .w-insight {
+      background: rgba(101,65,242,0.04);
+      border: 1px solid rgba(101,65,242,0.08);
+      border-radius: var(--r-8);
+      padding: var(--sp-12);
+      margin-top: var(--sp-16);
+    }
+    .w-insight-title { font-size: 11px; font-weight: 900; color: var(--brand); margin-bottom: var(--sp-4); }
+    .w-insight-body { font-size: 13px; color: var(--t-secondary); line-height: 1.55; }
+
+    /* ──────────────────────────────────────────────────────────
+       TESTIMONIALS
+    ────────────────────────────────────────────────────────── */
+    .testimonials { background: var(--bg-subtle); }
+    .testimonials-header { text-align: center; margin-bottom: var(--sp-48); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-20);
+    }
+    .t-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-12);
+      padding: var(--sp-28);
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .t-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 18px; right: 24px;
+      font-size: 60px;
+      font-weight: 900;
+      color: rgba(101,65,242,0.08);
+      line-height: 1;
+    }
+    .t-body {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--t-secondary);
+      line-height: 1.7;
+      letter-spacing: -0.2px;
+      margin-bottom: var(--sp-20);
+    }
+    .t-footer { display: flex; align-items: center; gap: var(--sp-12); }
+    .t-avatar {
+      width: 36px; height: 36px;
+      border-radius: var(--r-circle);
+      background: var(--g-brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .t-name { font-size: 13px; font-weight: 900; color: var(--t-primary); }
+    .t-role { font-size: 12px; font-weight: 400; color: var(--t-muted); }
+
+    /* ──────────────────────────────────────────────────────────
+       PRICING — 3-tier cards
+       Audit: "Pricing is in a FAQ — conversion-hostile location"
+    ────────────────────────────────────────────────────────── */
+    .pricing { background: var(--bg-white); }
+    .pricing-header { text-align: center; margin-bottom: var(--sp-56); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-20);
+      align-items: start;
+    }
+    .p-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r-20);
+      padding: var(--sp-32);
+      position: relative;
+      transition: all 0.2s;
+    }
+    .p-card:hover { box-shadow: var(--shadow-card); }
+    .p-card.featured {
+      background: var(--g-brand);
+      border-color: var(--brand);
+      color: #fff;
+      box-shadow: rgba(101,65,242,0.2) 0px 8px 40px;
+    }
+    .p-card.featured:hover { transform: translateY(-3px); }
+    .p-badge {
+      position: absolute;
+      top: -11px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--brand-light);
+      color: #fff;
+      border-radius: var(--r-pill);
+      padding: var(--sp-4) 14px;
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .p-tier {
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--brand);
+      letter-spacing: 0.24px;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-8);
+    }
+    .p-card.featured .p-tier { color: rgba(255,255,255,0.6); }
+    .p-name {
+      font-size: 26px;
+      font-weight: 1000;
+      letter-spacing: -1.04px;
+      line-height: 36.4px;
+      color: var(--t-black);
+      margin-bottom: var(--sp-4);
+    }
+    .p-card.featured .p-name { color: #fff; }
+    .p-points {
+      font-family: var(--f-kr);
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -1.28px;
+      line-height: 44.8px;
+      color: var(--brand);
+      margin-bottom: var(--sp-4);
+    }
+    .p-card.featured .p-points { color: var(--brand-lavender); }
+    .p-pts-sub {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--t-muted);
+      margin-bottom: var(--sp-24);
+    }
+    .p-card.featured .p-pts-sub { color: rgba(255,255,255,0.5); }
+    .p-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin-bottom: var(--sp-20);
+    }
+    .p-card.featured .p-divider { border-color: rgba(255,255,255,0.12); }
+    .p-features {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-10);
+      margin-bottom: var(--sp-28);
+    }
+    .p-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-10);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--t-secondary);
+      line-height: 1.55;
+    }
+    .p-card.featured .p-features li { color: rgba(255,255,255,0.8); }
+    .p-features li::before {
+      content: '✓';
+      font-size: 11px;
+      font-weight: 900;
+      color: var(--brand);
+      background: rgba(101,65,242,0.08);
+      border-radius: var(--r-circle);
+      width: 18px; height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .p-card.featured .p-features li::before {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .p-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 13px;
+      border-radius: var(--r-11);
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 1000;
+      letter-spacing: -0.32px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .p-btn-ghost {
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      color: var(--t-secondary);
+    }
+    .p-btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+    .p-btn-white { background: #fff; color: var(--brand); }
+    .p-btn-white:hover { background: rgba(255,255,255,0.9); }
+    .p-btn-dark { background: var(--brand-muted); color: #fff; }
+    .p-btn-dark:hover { background: var(--brand); }
+    .pricing-note {
+      text-align: center;
+      margin-top: var(--sp-32);
+      font-size: 13px;
+      color: var(--t-muted);
+    }
+    .pricing-note a { color: var(--brand); font-weight: 700; }
+
+    /* ──────────────────────────────────────────────────────────
+       FAQ — accordion
+    ────────────────────────────────────────────────────────── */
+    .faq { background: var(--bg-light); }
+    .faq-header { text-align: center; margin-bottom: var(--sp-48); }
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-8);
+    }
+    .faq-item {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-12);
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: var(--sp-20) var(--sp-24);
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+      color: var(--t-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      transition: color 0.3s;
+    }
+    .faq-q:hover { color: var(--brand); }
+    .faq-icon {
+      font-size: 18px;
+      color: var(--t-ghost);
+      transition: transform 0.3s, color 0.3s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--brand); }
+    .faq-a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--t-muted);
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 var(--sp-24);
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding: 0 var(--sp-24) var(--sp-20);
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       FINAL CTA — dark navy + radial glow
+    ────────────────────────────────────────────────────────── */
+    .final-cta {
+      background: var(--bg-dark);
+      padding: var(--sp-100) 0;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 1000px; height: 600px;
+      background: var(--glow-deep-dark);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .final-cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 var(--sp-40);
+    }
+    .final-cta-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-12);
+      flex-wrap: wrap;
+      margin-bottom: var(--sp-20);
+    }
+    .final-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+    .final-note a { color: rgba(255,255,255,0.5); text-decoration: underline; }
+
+    /* ──────────────────────────────────────────────────────────
+       FOOTER
+       bg: #121822 · h6: 13px/1000/-0.26px/lh20.8px/#73727a
+       footer links: 13px/1000/rgba(84,82,94,0.83)
+       strong: 12px/1000/0.24px/#73727a
+    ────────────────────────────────────────────────────────── */
+    .footer {
+      background: var(--bg-dark);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: var(--sp-48) 0 var(--sp-32);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--sp-40);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--sp-48);
+      margin-bottom: var(--sp-48);
+    }
+    .footer-brand {
+      font-family: var(--f-main);
+      font-size: 13px;
+      font-weight: 1000;
+      line-height: 20.8px;
+      letter-spacing: -0.26px;
+      color: var(--t-light);
+      margin-bottom: var(--sp-8);
+    }
+    .footer-tagline {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.65;
+      margin-bottom: var(--sp-20);
+    }
+    .footer-contact {
+      font-size: 12px;
+      font-weight: 1000;
+      letter-spacing: 0.24px;
+      line-height: 16.8px;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-col-title {
+      font-size: 12px;
+      font-weight: 1000;
+      letter-spacing: 0.24px;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      margin-bottom: var(--sp-16);
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-10);
+    }
+    .footer-links a {
+      font-family: var(--f-main);
+      font-size: 13px;
+      font-weight: 1000;
+      color: var(--t-muted);
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding-top: var(--sp-24);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--sp-12);
+    }
+    .footer-legal {
+      font-family: var(--f-main);
+      font-size: 12px;
+      font-weight: 1000;
+      letter-spacing: 0.24px;
+      line-height: 16.8px;
+      color: rgba(255,255,255,0.2);
+    }
+    .footer-legal a {
+      color: var(--t-light);
+      font-weight: 1000;
+    }
+    .footer-legal a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ──────────────────────────────────────────────────────────
+       RESPONSIVE
+    ────────────────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .section-title { font-size: 36px; line-height: 46px; letter-spacing: -0.9px; }
+      .hero h1 { font-size: 36px; line-height: 46px; letter-spacing: -0.9px; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .weekly-inner { grid-template-columns: 1fr; gap: var(--sp-40); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: var(--sp-60) 0; }
+      .container,
+      .hero-inner,
+      .footer-inner,
+      .weekly-inner,
+      .final-cta-inner,
+      .search-demo-inner { padding-left: var(--sp-24); padding-right: var(--sp-24); }
+      .nav-inner { padding: 0 var(--sp-16); }
+      .section-title { font-size: 28px; line-height: 36px; }
+      .hero h1 { font-size: 28px; line-height: 36px; }
+      .hero-stat { padding: 0 var(--sp-16); }
+      .hero-stat-num { font-size: 24px; line-height: 32px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: var(--sp-32); }
+      .nav-links { display: none; }
+      .s-card-num { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- URGENCY BANNER -->
+  <div class="banner">
+    <strong>정부 지원 마감 D-23</strong> — 중소기업 최대 3,000만원 지원 (데이터바우처, 3월 31일 마감)
+    <a href="https://tanalysis.co.kr/data-voucher">지금 신청하기 →</a>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="https://tanalysis.co.kr/" class="nav-logo">
+        <svg width="28" height="32" viewBox="0 0 28 32" fill="none">
+          <rect width="28" height="32" rx="6" fill="#6541f2"/>
+          <text x="6" y="24" font-family="sans-serif" font-weight="900" font-size="20" fill="white">T</text>
+        </svg>
+        <span class="nav-logo-text">타날리시스</span>
+      </a>
+      <div class="nav-links">
+        <a href="https://tanalysis.co.kr/patent-search">특허 검색·분석</a>
+        <a href="https://tanalysis.co.kr/classification">AI 분류</a>
+        <a href="https://tanalysis.co.kr/reportbymail">위클리 리포트</a>
+        <a href="#why">왜 타날리시스?</a>
+      </div>
+      <div class="nav-ctas">
+        <a href="https://tanalysis.ai/login" class="btn-nav-ghost"><span>로그인</span></a>
+        <a href="https://tanalysis.ai/sign-up" class="btn-nav-primary"><span>무료로 시작하기</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">변리사가 만든 특허 특화 AI · 심사 데이터 8천만 건 학습</div>
+      <h1>심사관 수준의 정확도로<br/><span class="accent">특허를 검색·분류하는 AI</span></h1>
+      <p class="hero-sub">상용 LLM과 달리 환각이 없습니다. 특허청·심판원의 거절·무효 데이터로 학습한 유일한 특허 특화 모델.</p>
+      <div class="hero-ctas">
+        <a href="https://tanalysis.ai/sign-up?utm_source=cokr&utm_medium=cta1" class="btn-hero-primary">
+          <span>무료로 시작하기</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="https://tanalysis.ai/pdf?file=introduction" class="btn-hero-secondary">
+          <span>소개자료 받기</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">85%</div>
+          <div class="hero-stat-label">심사관 인용 재현율 (타사 4배)</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">8천만</div>
+          <div class="hero-stat-label">학습 데이터 건수</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">90%+</div>
+          <div class="hero-stat-label">AI 분류 정확도</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">30초</div>
+          <div class="hero-stat-label">검색 결과 도출</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH DEMO -->
+  <div class="search-demo">
+    <div class="search-demo-inner">
+      <div class="search-demo-box">
+        <div class="search-demo-label">AI 문장 검색 체험</div>
+        <input class="search-demo-input" type="text" placeholder="찾으려는 기술 내용을 간단히 설명해주세요." readonly />
+        <button class="search-demo-btn" onclick="window.open('https://tanalysis.ai/sign-up','_blank')">누락 없는 검색 결과 확인하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <span class="trust-label">도입 기업</span>
+      <span class="trust-item"><span class="trust-dot"></span>국내 상위 화학기업</span>
+      <span class="trust-item"><span class="trust-dot"></span>자율주행 업체</span>
+      <span class="trust-item"><span class="trust-dot"></span>바이오 분야 대기업</span>
+      <span class="trust-item"><span class="trust-dot"></span>특허법인 다수</span>
+      <span class="trust-item" style="color:var(--brand);font-weight:900;">데이터바우처 공급기업</span>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <section class="comparison" id="why">
+    <div class="container">
+      <div class="comparison-header">
+        <p class="section-eyebrow">도입 전 vs 도입 후</p>
+        <h2 class="section-title">다 같은 AI가 아닙니다</h2>
+        <p class="section-sub" style="margin:0 auto;text-align:center;">타날리시스는 특허청 심사 데이터로 학습한 유일한 특허 특화 AI입니다.</p>
+      </div>
+      <div class="comparison-wrap">
+        <table class="tbl-compare">
+          <thead>
+            <tr>
+              <th>항목</th>
+              <th class="col-before">기존 방식</th>
+              <th class="col-after">타날리시스 도입 시</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>검색 입력</td><td class="td-before">복잡한 검색식 직접 작성</td><td class="td-after">구성별 문장 입력 (의미 기반 AI 검색)</td></tr>
+            <tr><td>구성별 분석</td><td class="td-before">구성별 별도 검색 반복</td><td class="td-after">구성별 일괄 검색 + 원문 근거 자동 제공</td></tr>
+            <tr><td>선행 문헌 검색</td><td class="td-before">불완전 — 요약부만 검색</td><td class="td-after">청구항 기반 전문(全文) 의미 검색</td></tr>
+            <tr><td>AI 품질</td><td class="td-before">상용 LLM — 환각, 보안 우려</td><td class="td-after">심사 데이터 기반 특허 특화 모델 (환각 없음)</td></tr>
+            <tr><td>재현율</td><td class="td-before">누락이 많거나, 노이즈가 많음</td><td class="td-after"><strong>85% — 심사관 수준</strong> (타사 4배)</td></tr>
+            <tr><td>특허 분류</td><td class="td-before">수작업 또는 사전학습 모델</td><td class="td-after">AI 자동화 — 10,000건을 5분에 90%+</td></tr>
+            <tr><td>다국어 대응</td><td class="td-before">언어별 긴 검색식 별도 추가</td><td class="td-after">한국어로 KR·US·JP·EP·CN·PCT 검색</td></tr>
+            <tr><td>보안</td><td class="td-before">외부 LLM에 특허 데이터 유출 위험</td><td class="td-after">IP 특화 보안 — 데이터 외부 전송 없음</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="container">
+      <div class="features-header">
+        <p class="section-eyebrow">기능 소개</p>
+        <h2 class="section-title">반복 업무를 AI가 대신합니다</h2>
+        <p class="section-sub" style="margin:0 auto;text-align:center;">특허 검색부터 분류·분석·모니터링까지, 하나의 플랫폼에서.</p>
+      </div>
+      <div class="features-grid">
+        <div class="f-card">
+          <div class="f-card-icon">🔍</div>
+          <h3 class="f-card-title">AI 문장 검색·분석</h3>
+          <p class="f-card-body">구성별로 문장을 입력하면 AI가 선행기술을 정확하게 찾습니다. 전문(全文) 검색으로 누락을 최소화합니다.</p>
+          <span class="f-card-tag">재현율 85% · 타사 4배</span>
+        </div>
+        <div class="f-card">
+          <div class="f-card-icon">📊</div>
+          <h3 class="f-card-title">AI 특허 분류 자동화</h3>
+          <p class="f-card-body">10,000건을 5분에 처리. 분류 기준이 있어도 없어도 즉시 가능. 13개+ 시각화 그래프로 인사이트 도출.</p>
+          <span class="f-card-tag">분류 정확도 90%+ · 프리미엄</span>
+        </div>
+        <div class="f-card">
+          <div class="f-card-icon">📧</div>
+          <h3 class="f-card-title">경쟁사 위클리 리포트</h3>
+          <p class="f-card-body">경쟁사를 등록하면 AI가 매주 새 특허를 분석해 월요일 아침 인박스로 전달합니다. 5분 설정.</p>
+          <span class="f-card-tag">매주 월요일 자동 발송</span>
+        </div>
+        <div class="f-card">
+          <div class="f-card-icon">🃏</div>
+          <h3 class="f-card-title">구성 카드 분석</h3>
+          <p class="f-card-body">문헌과 구성의 유사도를 수치와 원문 근거로 파악. 무효자료 조사, FTO 분석, 침해 판단에 활용.</p>
+          <span class="f-card-tag">심사관 수준 AI 분석</span>
+        </div>
+        <div class="f-card">
+          <div class="f-card-icon">💬</div>
+          <h3 class="f-card-title">TANA-GPT 문헌 질문</h3>
+          <p class="f-card-body">문헌 검토 중 궁금한 내용을 AI에게 바로 질문. 특허 특화 모델이라 환각 없는 답변을 제공합니다.</p>
+          <span class="f-card-tag">환각 없는 특허 AI</span>
+        </div>
+        <div class="f-card">
+          <div class="f-card-icon">📤</div>
+          <h3 class="f-card-title">내보내기 · 협업 도구</h3>
+          <p class="f-card-body">클레임차트 내보내기, 엑셀 다운로드, 링크 공유. 형광펜과 코멘트로 중요 내용 표시.</p>
+          <span class="f-card-tag">팀 협업 지원</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-header">
+        <p class="section-eyebrow" style="color:var(--brand-lavender);">숫자가 증명하는 품질</p>
+        <h2 class="section-title" style="color:#fff;">타날리시스가 다른 이유</h2>
+        <p class="section-sub" style="color:rgba(255,255,255,0.55);margin:0 auto;text-align:center;">주장이 아닌 데이터로 증명합니다.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="s-card">
+          <div class="s-card-num">85%</div>
+          <div class="s-card-label">심사관 인용 재현율</div>
+          <div class="s-card-note">자사 테스트 기준 · 타사 4배</div>
+        </div>
+        <div class="s-card">
+          <div class="s-card-num">8천만</div>
+          <div class="s-card-label">학습 데이터 건수</div>
+          <div class="s-card-note">특허청·심판원 거절·무효 자료</div>
+        </div>
+        <div class="s-card">
+          <div class="s-card-num">90%+</div>
+          <div class="s-card-label">AI 분류 정확도</div>
+          <div class="s-card-note">실제 수작업 대비 · 만족도 4.3/5</div>
+        </div>
+        <div class="s-card">
+          <div class="s-card-num">6개국</div>
+          <div class="s-card-label">특허 검색 커버리지</div>
+          <div class="s-card-note">KR · US · JP · EP · CN · PCT</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEEKLY REPORT -->
+  <section class="weekly">
+    <div class="weekly-inner">
+      <div>
+        <p class="section-eyebrow">위클리 리포트</p>
+        <h2 class="section-title">경쟁사가 어디로 가는지<br/>이제 찾아보지 않아도 됩니다</h2>
+        <p class="section-sub">경쟁사 또는 기술을 한 번만 등록하면, AI가 매주 분석해 월요일 아침 인박스로 전달합니다.</p>
+        <div class="weekly-steps">
+          <div class="weekly-step"><div class="weekly-step-num">1</div><div class="weekly-step-text"><strong>5분 설정</strong> — 경쟁사 또는 기술 등록</div></div>
+          <div class="weekly-step"><div class="weekly-step-num">2</div><div class="weekly-step-text"><strong>AI 자동 분석</strong> — 매주 새 특허를 전략 시그널로 해석</div></div>
+          <div class="weekly-step"><div class="weekly-step-num">3</div><div class="weekly-step-text"><strong>월요일 아침 도착</strong> — 30초에 읽는 브리핑</div></div>
+        </div>
+        <div class="weekly-ctas">
+          <a href="https://tanalysis.ai/inquiry" class="btn-action">무료 상담 신청 →</a>
+          <a href="https://tanalysis.co.kr/reportbymail" class="btn-pill">리포트 샘플 보기 →</a>
+        </div>
+        <p style="font-size:12px;color:var(--t-muted);margin-top:var(--sp-12);">정부 지원으로 최대 90% 비용 절감 (마감 3/31)</p>
+      </div>
+      <div>
+        <div class="w-card">
+          <div class="w-card-head">
+            <div>
+              <div class="w-card-title">위클리 특허 리포트</div>
+              <div style="font-size:11px;color:var(--t-ghost);margin-top:2px;">2026년 3월 3일 (월) · AI 자동 생성</div>
+            </div>
+            <span class="w-card-badge">신규 분석</span>
+          </div>
+          <div style="font-size:11px;font-weight:900;color:var(--t-muted);letter-spacing:0.24px;margin-bottom:var(--sp-8);">경쟁사 동향</div>
+          <div class="w-row">
+            <div><div class="w-company">NAVER</div><div class="w-detail">AI 추천 기술 · 12건 신규 출원</div></div>
+            <span class="w-signal up">▲ 핵심 베팅</span>
+          </div>
+          <div class="w-row">
+            <div><div class="w-company">KAKAO</div><div class="w-detail">멀티모달 LLM · 7건 신규 출원</div></div>
+            <span class="w-signal warn">⚠ 주의</span>
+          </div>
+          <div class="w-row">
+            <div><div class="w-company">NAVER LABS</div><div class="w-detail">자율주행 센서 · 4건 출원</div></div>
+            <span class="w-signal ok">✓ 지속</span>
+          </div>
+          <div class="w-insight">
+            <div class="w-insight-title">AI 인사이트</div>
+            <div class="w-insight-body">NAVER의 AI 추천 기술 집중 출원은 커머스 추천 엔진 강화 신호입니다. 관련 FTO 분석을 권장합니다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="testimonials-header">
+        <p class="section-eyebrow">고객 후기</p>
+        <h2 class="section-title">앞서가는 전문가들은<br/>이미 타날리시스를 도입했습니다</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="t-card">
+          <p class="t-body">다른 DB에서 찾지 못했던 무효조사 자료를 타날리시스를 통해 확보할 수 있었습니다. 전문 검색 덕분에 기존 도구에서 놓쳤던 문헌을 잡아냈습니다.</p>
+          <div class="t-footer"><div class="t-avatar">화</div><div><div class="t-name">책임 연구원</div><div class="t-role">국내 상위 화학기업</div></div></div>
+        </div>
+        <div class="t-card">
+          <p class="t-body">선행 기술 조사 시 유사한 특허가 검색되어 불필요한 출원을 방지할 수 있었습니다. R&D 초기 단계에서의 FTO 분석에 핵심 도구가 되었습니다.</p>
+          <div class="t-footer"><div class="t-avatar">자</div><div><div class="t-name">책임 연구원</div><div class="t-role">자율주행 업체</div></div></div>
+        </div>
+        <div class="t-card">
+          <p class="t-body">특허분석 및 IP리스크 진단 측면에서 효율성을 극대화할 수 있습니다. 변리사 입장에서 검색 정확도는 타 서비스와 비교가 안 됩니다.</p>
+          <div class="t-footer"><div class="t-avatar">바</div><div><div class="t-name">소속 변리사</div><div class="t-role">바이오 분야 대기업</div></div></div>
+        </div>
+        <div class="t-card">
+          <p class="t-body">기술 검색에 필수적인 기능들을 모두 포함하고 있습니다. 구성카드 기능으로 청구항 비교 분석 시간이 절반 이하로 줄었습니다.</p>
+          <div class="t-footer"><div class="t-avatar">IP</div><div><div class="t-name">IP 전략팀</div><div class="t-role">국내 대기업 인하우스</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="pricing-header">
+        <p class="section-eyebrow">요금제</p>
+        <h2 class="section-title">추가 결제 없이 시작하세요</h2>
+        <p class="section-sub" style="margin:0 auto;text-align:center;">포인트제로 사용한 만큼만 차감됩니다.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="p-card">
+          <div class="p-tier">Free</div>
+          <div class="p-name">무료 체험</div>
+          <div class="p-points">20pt</div>
+          <div class="p-pts-sub">매일 지급 · 신용카드 불필요</div>
+          <hr class="p-divider" />
+          <ul class="p-features">
+            <li>AI 문장·키워드 검색 (10pt/회)</li>
+            <li>구성 카드 분석 (10pt/회)</li>
+            <li>KR·US·JP·EP·CN·PCT 검색</li>
+            <li>검색 결과 링크 공유</li>
+            <li>폴더·중요 문헌 저장</li>
+          </ul>
+          <a href="https://tanalysis.ai/sign-up" class="p-btn p-btn-ghost">무료로 시작하기</a>
+        </div>
+        <div class="p-card featured">
+          <div class="p-badge">가장 많이 선택</div>
+          <div class="p-tier">Business</div>
+          <div class="p-name">비즈니스</div>
+          <div class="p-points">1,000pt</div>
+          <div class="p-pts-sub">매월 지급 · 팀 단위 합산 가능</div>
+          <hr class="p-divider" />
+          <ul class="p-features">
+            <li>Free 플랜 모든 기능 포함</li>
+            <li>월 100건 AI 검색·분석</li>
+            <li>TANA-GPT 문헌 질문</li>
+            <li>클레임차트·결과 내보내기</li>
+            <li>엑셀 다운로드 무제한</li>
+          </ul>
+          <a href="https://tanalysis.ai/sign-up" class="p-btn p-btn-white">지금 가입하면 무료</a>
+        </div>
+        <div class="p-card">
+          <div class="p-tier">Premium</div>
+          <div class="p-name">엔터프라이즈</div>
+          <div class="p-points">협의</div>
+          <div class="p-pts-sub">조직 규모 기반 맞춤 견적</div>
+          <hr class="p-divider" />
+          <ul class="p-features">
+            <li>Business 모든 기능 포함</li>
+            <li>AI 특허 분류 (10,000건/5분)</li>
+            <li>13개+ 시각화 그래프</li>
+            <li>위클리 리포트 통합</li>
+            <li>전담 변리사 팀 지원</li>
+          </ul>
+          <a href="https://tanalysis.ai/inquiry" class="p-btn p-btn-dark">도입 문의</a>
+        </div>
+      </div>
+      <p class="pricing-note">데이터바우처로 최대 90% 지원 (3/31 마감) · <a href="https://tanalysis.co.kr/data-voucher">지금 신청 →</a></p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq-header">
+        <p class="section-eyebrow">자주 묻는 질문</p>
+        <h2 class="section-title">궁금한 점이 있으신가요?</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">타날리시스 AI는 다른 AI 검색 도구와 어떻게 다른가요?<span class="faq-icon">+</span></div>
+          <div class="faq-a">타날리시스는 특허청(KIPO)과 심판원(IPTAB)의 실제 거절·무효 심사 데이터 8천만 건으로 학습한 유일한 특허 특화 AI입니다. ChatGPT 등 상용 LLM과 달리 환각이 없고, 전문(全文) 검색으로 재현율 85%를 달성합니다 (타사 대비 4배).</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">가입 후 바로 사용할 수 있나요?<span class="faq-icon">+</span></div>
+          <div class="faq-a">가입 신청 후 영업일 기준 1일 이내에 승인 안내 메일을 발송합니다. 빠른 체험을 원하시면 팀 미팅을 신청해 주시면 팀 전체에 2주 Trial을 즉시 제공합니다.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">포인트는 어떻게 사용되나요?<span class="faq-icon">+</span></div>
+          <div class="faq-a">검색·분석 1회당 10pt, AI 분류(Lite) 40pt, AI 분류(전체) 200pt가 차감됩니다. Free는 20pt/일, Business는 1,000pt/월이 지급됩니다. 충전일로부터 1개월 유효합니다.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">특허 데이터 보안은 어떻게 관리되나요?<span class="faq-icon">+</span></div>
+          <div class="faq-a">상용 LLM과 달리 입력된 데이터가 외부로 전송되거나 학습에 사용되지 않습니다. 민감한 출원 전 기술 데이터를 안전하게 분석할 수 있습니다.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">중소기업도 도입할 수 있나요?<span class="faq-icon">+</span></div>
+          <div class="faq-a">데이터바우처 공급기업으로 선정되어 있어 중소기업은 최대 3,000만원 (비용의 최대 90%)의 정부 지원을 받아 도입할 수 있습니다. 신청 마감은 3월 31일입니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="final-cta-inner">
+      <p class="section-eyebrow" style="color:var(--brand-lavender);">지금 시작하세요</p>
+      <h2 class="section-title" style="color:#fff;">새로운 방식으로<br/>검색해보세요.</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.55);margin:0 auto var(--sp-40);text-align:center;">무료로 시작하고, 심사관 수준의 AI 특허 검색을 직접 경험해보세요.</p>
+      <div class="final-cta-btns">
+        <a href="https://tanalysis.ai/sign-up" class="btn-hero-primary" style="animation:none;"><span>무료로 시작하기</span><span class="arrow">→</span></a>
+        <a href="https://tanalysis.ai/inquiry" class="btn-hero-secondary"><span>도입 문의</span></a>
+      </div>
+      <p class="final-note">팀 미팅 신청 시 팀 전체 2주 Trial 무료 · <a href="https://tanalysis.co.kr/team-meeting">팀 미팅 신청</a></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">타날리시스 | 변리사가 만들어 더 정확한 AI 특허 분석</div>
+          <div class="footer-tagline">특허청 심사 데이터 기반 유일한 특허 특화 AI<br/>변리사와 AI 전문가가 직접 만들어 정확도와 실무 적합도가 매우 높습니다.</div>
+          <div class="footer-contact">서울특별시 강남구 역삼로 169 (팁스타운S2)<br/>02-568-7222 · tanalysis@tanalysis.co.kr</div>
+        </div>
+        <div>
+          <div class="footer-col-title">기능</div>
+          <div class="footer-links">
+            <a href="https://tanalysis.co.kr/patent-search">특허 검색·분석</a>
+            <a href="https://tanalysis.co.kr/classification">AI 특허 분류</a>
+            <a href="https://tanalysis.co.kr/reportbymail">위클리 리포트</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">자료</div>
+          <div class="footer-links">
+            <a href="https://tanalysis.ai/pdf?file=introduction">소개자료 다운로드</a>
+            <a href="https://tanalysis.ai/pdf?file=welcome">분야별 상세 사례</a>
+            <a href="https://ai-tanalysis.tistory.com/">블로그</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">고객지원</div>
+          <div class="footer-links">
+            <a href="https://tanalysis.ai/welcome">자주 묻는 질문</a>
+            <a href="https://tanalysis.channel.io/">고객센터</a>
+            <a href="https://tanalysis.co.kr/team-meeting">팀 미팅 신청</a>
+            <a href="https://tanalysis.co.kr/data-voucher">정부 지원 신청</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-legal">(주)타날리시스 · 대표: 최인경 · 사업자등록번호: 564-88-02306 · 개인정보보호책임자: 최인경 · <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5648802306">사업자 정보확인</a></div>
+        <div class="footer-legal">ⓒ 2025 Tanalysis. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+</body>
+</html>
