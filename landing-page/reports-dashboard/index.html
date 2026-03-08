@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanalysis 마케팅 종합 대시보드</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0f1117;--surface:#1a1d27;--card:#222536;--border:#2e3348;
+  --text:#e4e7f1;--muted:#8b8fa8;--accent:#6c5ce7;--accent2:#00cec9;
+  --green:#00b894;--red:#ff6b6b;--orange:#fdcb6e;--blue:#74b9ff;
+  --purple:#a29bfe;--pink:#fd79a8;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Layout */
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar h1{font-size:18px;font-weight:700}
+.topbar h1 span{color:var(--accent2)}
+.topbar .date{color:var(--muted);font-size:13px}
+
+.layout{display:flex;min-height:100vh}
+.sidebar{width:240px;background:var(--surface);border-right:1px solid var(--border);padding:16px 0;position:sticky;top:49px;height:calc(100vh - 49px);overflow-y:auto;flex-shrink:0}
+.sidebar a{display:flex;align-items:center;gap:10px;padding:10px 20px;color:var(--muted);font-size:13px;transition:.2s}
+.sidebar a:hover,.sidebar a.active{color:var(--text);background:rgba(108,92,231,.15);text-decoration:none;border-right:3px solid var(--accent)}
+.sidebar .icon{width:20px;text-align:center;font-size:14px}
+.main{flex:1;padding:24px 32px;max-width:1200px}
+
+/* Cards */
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
+.score-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;transition:.3s}
+.score-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.score-card .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.score-card .value{font-size:36px;font-weight:800}
+.score-card .sub{font-size:12px;color:var(--muted);margin-top:4px}
+.score-card.green .value{color:var(--green)}
+.score-card.red .value{color:var(--red)}
+.score-card.orange .value{color:var(--orange)}
+.score-card.blue .value{color:var(--blue)}
+.score-card.purple .value{color:var(--purple)}
+.score-card.accent .value{color:var(--accent2)}
+
+/* Sections */
+.section{margin-bottom:40px;scroll-margin-top:70px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.section-header h2{font-size:20px;font-weight:700}
+.section-header .badge{background:var(--accent);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px}
+
+/* Tables */
+.data-table{width:100%;border-collapse:collapse;margin-bottom:16px}
+.data-table th,.data-table td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);font-size:13px}
+.data-table th{color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;font-size:11px}
+.data-table tr:hover td{background:rgba(108,92,231,.05)}
+
+/* Bar chart */
+.bar-chart{margin:16px 0}
+.bar-row{display:flex;align-items:center;margin-bottom:10px}
+.bar-label{width:160px;font-size:13px;flex-shrink:0}
+.bar-track{flex:1;height:28px;background:var(--surface);border-radius:6px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:12px;font-weight:700;color:#fff;transition:width .8s ease}
+.bar-score{width:50px;text-align:right;font-size:14px;font-weight:700;flex-shrink:0;margin-left:10px}
+
+/* Funnel */
+.funnel{display:flex;flex-direction:column;align-items:center;gap:4px;margin:20px 0}
+.funnel-step{display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;height:44px;border-radius:6px;transition:.3s}
+.funnel-step:hover{opacity:.85}
+.funnel-arrow{color:var(--muted);font-size:18px}
+
+/* Tabs */
+.tabs{display:flex;gap:4px;margin-bottom:20px;flex-wrap:wrap}
+.tab{padding:8px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:13px;color:var(--muted);transition:.2s}
+.tab:hover,.tab.active{color:var(--text);border-color:var(--accent);background:rgba(108,92,231,.1)}
+
+/* Timeline */
+.timeline{border-left:2px solid var(--border);padding-left:20px;margin:16px 0}
+.timeline-item{position:relative;margin-bottom:20px}
+.timeline-item::before{content:'';position:absolute;left:-26px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.timeline-item.green::before{background:var(--green)}
+.timeline-item.orange::before{background:var(--orange)}
+.timeline-item.red::before{background:var(--red)}
+.timeline-item h4{font-size:14px;margin-bottom:4px}
+.timeline-item p{font-size:13px;color:var(--muted)}
+
+/* Pills */
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;margin:2px}
+.pill.high{background:rgba(255,107,107,.15);color:var(--red)}
+.pill.med{background:rgba(253,203,110,.15);color:var(--orange)}
+.pill.low{background:rgba(0,184,148,.15);color:var(--green)}
+
+/* Grid layout */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px}
+.info-card h4{font-size:14px;margin-bottom:8px;color:var(--accent2)}
+.info-card p,.info-card li{font-size:13px;color:var(--muted)}
+.info-card ul{padding-left:18px}
+.info-card li{margin-bottom:4px}
+
+/* Keyword tags */
+.tag-cloud{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.tag{padding:4px 12px;background:var(--surface);border:1px solid var(--border);border-radius:20px;font-size:12px;color:var(--muted)}
+
+/* Donut chart CSS */
+.donut-wrap{display:flex;align-items:center;gap:24px;margin:16px 0}
+.donut{width:120px;height:120px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center}
+.donut .inner{position:absolute;width:70px;height:70px;background:var(--card);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800}
+.donut-legend{font-size:13px}
+.donut-legend div{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.donut-legend .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* Collapsible */
+.collapse-btn{background:none;border:1px solid var(--border);color:var(--text);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:13px;transition:.2s;display:flex;align-items:center;gap:6px}
+.collapse-btn:hover{border-color:var(--accent)}
+.collapsible{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.collapsible.open{max-height:4000px}
+
+/* Responsive */
+@media(max-width:900px){
+  .sidebar{display:none}
+  .two-col,.three-col{grid-template-columns:1fr}
+  .score-grid{grid-template-columns:repeat(2,1fr)}
+  .main{padding:16px}
+}
+@media(max-width:600px){
+  .score-grid{grid-template-columns:1fr}
+  .bar-label{width:100px;font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>Tanalysis <span>마케팅 종합 대시보드</span></h1>
+  <div class="date">분석일: 2026-03-08</div>
+</div>
+
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+  <a href="#overview" class="active"><span class="icon">📊</span> 종합 개요</a>
+  <a href="#audit"><span class="icon">🔍</span> 마케팅 감사</a>
+  <a href="#cro"><span class="icon">🎯</span> CRO 분석</a>
+  <a href="#seo"><span class="icon">🔎</span> SEO 감사</a>
+  <a href="#funnel"><span class="icon">📈</span> 퍼널 분석</a>
+  <a href="#competitor"><span class="icon">⚔️</span> 경쟁사 분석</a>
+  <a href="#copy"><span class="icon">✍️</span> 카피 분석</a>
+  <a href="#brand"><span class="icon">🎨</span> 브랜드 보이스</a>
+  <a href="#ads"><span class="icon">📢</span> 광고 캠페인</a>
+  <a href="#email"><span class="icon">📧</span> 이메일 시퀀스</a>
+  <a href="#social"><span class="icon">📱</span> 소셜 캘린더</a>
+  <a href="#report"><span class="icon">📋</span> 종합 보고서</a>
+</nav>
+
+<main class="main">
+
+<!-- ===== OVERVIEW ===== -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <h2>종합 개요</h2>
+    <span class="badge">Executive Summary</span>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-card orange">
+      <div class="label">마케팅 종합 점수</div>
+      <div class="value">61</div>
+      <div class="sub">/100 · Grade C</div>
+    </div>
+    <div class="score-card red">
+      <div class="label">퍼널 건강도</div>
+      <div class="value">54</div>
+      <div class="sub">/100</div>
+    </div>
+    <div class="score-card red">
+      <div class="label">카피 점수</div>
+      <div class="value">54</div>
+      <div class="sub">/100</div>
+    </div>
+    <div class="score-card red">
+      <div class="label">SEO 점수</div>
+      <div class="value">44</div>
+      <div class="sub">/100 · 수정 후</div>
+    </div>
+    <div class="score-card green">
+      <div class="label">브랜드 일관성</div>
+      <div class="value">8.0</div>
+      <div class="sub">/10</div>
+    </div>
+    <div class="score-card accent">
+      <div class="label">예상 개선 효과</div>
+      <div class="value">+60%</div>
+      <div class="sub">리드 볼륨 (3~6개월)</div>
+    </div>
+  </div>
+
+  <!-- Score Bar Chart -->
+  <h3 style="margin-bottom:16px;font-size:16px">카테고리별 점수 현황</h3>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label">브랜드 & 신뢰</div>
+      <div class="bar-track"><div class="bar-fill" style="width:68%;background:linear-gradient(90deg,var(--green),var(--accent2))">68%</div></div>
+      <div class="bar-score">68</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">경쟁 포지셔닝</div>
+      <div class="bar-track"><div class="bar-fill" style="width:65%;background:linear-gradient(90deg,var(--green),var(--accent2))">65%</div></div>
+      <div class="bar-score">65</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">SEO & 검색</div>
+      <div class="bar-track"><div class="bar-fill" style="width:62%;background:linear-gradient(90deg,var(--orange),var(--green))">62%</div></div>
+      <div class="bar-score">62</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">성장 & 전략</div>
+      <div class="bar-track"><div class="bar-fill" style="width:60%;background:linear-gradient(90deg,var(--orange),var(--green))">60%</div></div>
+      <div class="bar-score">60</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">콘텐츠 & 메시징</div>
+      <div class="bar-track"><div class="bar-fill" style="width:58%;background:linear-gradient(90deg,var(--red),var(--orange))">58%</div></div>
+      <div class="bar-score">58</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">전환 최적화</div>
+      <div class="bar-track"><div class="bar-fill" style="width:55%;background:linear-gradient(90deg,var(--red),var(--orange))">55%</div></div>
+      <div class="bar-score">55</div>
+    </div>
+  </div>
+
+  <!-- Product Strengths -->
+  <h3 style="margin:24px 0 16px;font-size:16px">제품 핵심 지표</h3>
+  <div class="score-grid">
+    <div class="score-card green">
+      <div class="label">선행문헌 재현율</div>
+      <div class="value">85%</div>
+      <div class="sub">경쟁사 대비 4배</div>
+    </div>
+    <div class="score-card green">
+      <div class="label">분류 정확도</div>
+      <div class="value">90%+</div>
+      <div class="sub">AI 자동 분류</div>
+    </div>
+    <div class="score-card blue">
+      <div class="label">데이터베이스</div>
+      <div class="value">8천만</div>
+      <div class="sub">특허 문서</div>
+    </div>
+    <div class="score-card purple">
+      <div class="label">분류 속도</div>
+      <div class="value">5분</div>
+      <div class="sub">10,000건 분류</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MARKETING AUDIT ===== -->
+<div class="section" id="audit">
+  <div class="section-header">
+    <h2>마케팅 종합 감사</h2>
+    <span class="badge">61/100</span>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 style="font-size:15px;margin-bottom:12px">가중 점수 분석</h3>
+      <table class="data-table">
+        <thead><tr><th>카테고리</th><th>점수</th><th>가중치</th><th>가중점수</th></tr></thead>
+        <tbody>
+          <tr><td>콘텐츠 & 메시징</td><td>58/100</td><td>25%</td><td>14.5</td></tr>
+          <tr><td>전환 최적화</td><td>55/100</td><td>20%</td><td>11.0</td></tr>
+          <tr><td>SEO & 검색</td><td>62/100</td><td>20%</td><td>12.4</td></tr>
+          <tr><td>경쟁 포지셔닝</td><td>65/100</td><td>15%</td><td>9.75</td></tr>
+          <tr><td>브랜드 & 신뢰</td><td>68/100</td><td>10%</td><td>6.8</td></tr>
+          <tr><td>성장 & 전략</td><td>60/100</td><td>10%</td><td>6.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3 style="font-size:15px;margin-bottom:12px">Quick Wins (즉시 실행 가능)</h3>
+      <div class="timeline">
+        <div class="timeline-item red"><h4>홈페이지 H1 재작성</h4><p>85% 재현율 통계 중심으로 · <span class="pill high">HIGH</span></p></div>
+        <div class="timeline-item red"><h4>주간 리포트를 홈페이지 CTA로 추가</h4><p>새로운 리드 채널 · <span class="pill high">HIGH</span></p></div>
+        <div class="timeline-item orange"><h4>승인 대기 시간 명시</h4><p>1영업일 명확히 표시 · <span class="pill med">MED</span></p></div>
+        <div class="timeline-item orange"><h4>비교표를 상단으로 이동</h4><p>Above the fold 배치 · <span class="pill med">MED</span></p></div>
+        <div class="timeline-item green"><h4>히어로에 수치 추가</h4><p>85%, 8천만건 등 · <span class="pill low">LOW</span></p></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;margin:24px 0 12px">예상 개선 효과</h3>
+  <table class="data-table">
+    <thead><tr><th>시행 항목</th><th>예상 효과</th><th>신뢰도</th><th>소요 기간</th></tr></thead>
+    <tbody>
+      <tr><td>H1 재작성</td><td>리드 +10~20%</td><td><span class="pill high">높음</span></td><td>1일</td></tr>
+      <tr><td>정부 바우처 CTA 추가</td><td>바우처 전환 +30~50%</td><td><span class="pill high">높음</span></td><td>1일</td></tr>
+      <tr><td>주간 리포트 CTA</td><td>신규 리드 +15~25%</td><td><span class="pill high">높음</span></td><td>3일</td></tr>
+      <tr><td>히어로 데모 영상</td><td>체험판 가입 +20~40%</td><td><span class="pill high">높음</span></td><td>2주</td></tr>
+      <tr><td>가입 후 너처링 개선</td><td>체험판 활성화 +15~25%</td><td><span class="pill med">중간</span></td><td>1주</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== CRO ===== -->
+<div class="section" id="cro">
+  <div class="section-header">
+    <h2>CRO 분석 (전환율 최적화)</h2>
+    <span class="badge">Technical Audit</span>
+  </div>
+
+  <div class="score-grid" style="grid-template-columns:repeat(3,1fr)">
+    <div class="score-card red">
+      <div class="label">페이지 로드 시간</div>
+      <div class="value">5.7초</div>
+      <div class="sub">목표: 2초 이내 · 전환 -35%</div>
+    </div>
+    <div class="score-card red">
+      <div class="label">페이지 단어 수</div>
+      <div class="value">399</div>
+      <div class="sub">최소 1,500+ 권장</div>
+    </div>
+    <div class="score-card red">
+      <div class="label">H1 태그 수</div>
+      <div class="value">4개</div>
+      <div class="sub">1개여야 정상</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;margin-bottom:12px">치명적 이슈 (Critical Issues)</h3>
+  <div class="three-col">
+    <div class="info-card">
+      <h4>이미지 Alt 텍스트</h4>
+      <p style="font-size:28px;font-weight:800;color:var(--red)">0%</p>
+      <p>6개 이미지 중 0개에 alt 텍스트 적용. SEO 및 접근성 심각 저하.</p>
+    </div>
+    <div class="info-card">
+      <h4>내부 링크</h4>
+      <p style="font-size:28px;font-weight:800;color:var(--red)">0개</p>
+      <p>모든 링크가 tanalysis.ai로 외부 이동. 도메인 권한 분산.</p>
+    </div>
+    <div class="info-card">
+      <h4>Schema Markup</h4>
+      <p style="font-size:28px;font-weight:800;color:var(--red)">0개</p>
+      <p>6개 이상 필요 (Organization, Product, FAQ 등).</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;margin:24px 0 12px">페이지 속도 vs 전환율 영향</h3>
+  <table class="data-table">
+    <thead><tr><th>로드 시간</th><th>전환율 영향</th><th>현재 상태</th></tr></thead>
+    <tbody>
+      <tr><td>0~2초</td><td>기준선 (최적)</td><td></td></tr>
+      <tr><td>2~3초</td><td>-7%</td><td></td></tr>
+      <tr><td>3~5초</td><td>-20%</td><td></td></tr>
+      <tr style="background:rgba(255,107,107,.1)"><td>5~8초</td><td>-35%</td><td style="color:var(--red);font-weight:700">← 현재 5.7초</td></tr>
+      <tr><td>8초+</td><td>-50%+</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:15px;margin:24px 0 12px">기술적 문제점</h3>
+  <ul style="font-size:13px;color:var(--muted);padding-left:20px">
+    <li>Meta description에 U+FEFF (zero-width no-break space) 버그 존재</li>
+    <li>도메인 권한 분산: tanalysis.co.kr ↔ tanalysis.ai</li>
+    <li>모든 CTA가 다른 도메인으로 이동</li>
+    <li>키워드 풍부한 콘텐츠 부재</li>
+    <li>Framer JS 렌더링으로 인덱싱 지연</li>
+  </ul>
+</div>
+
+<!-- ===== SEO ===== -->
+<div class="section" id="seo">
+  <div class="section-header">
+    <h2>SEO 감사</h2>
+    <span class="badge">44/100</span>
+  </div>
+
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label">콘텐츠 전략</div>
+      <div class="bar-track"><div class="bar-fill" style="width:47%;background:var(--orange)">14/30</div></div>
+      <div class="bar-score" style="color:var(--orange)">14/30</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">콘텐츠 품질 (E-E-A-T)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--orange)">12/20</div></div>
+      <div class="bar-score" style="color:var(--orange)">12/20</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">On-Page SEO</div>
+      <div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--red)">10/25</div></div>
+      <div class="bar-score" style="color:var(--red)">10/25</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">기술적 SEO</div>
+      <div class="bar-track"><div class="bar-fill" style="width:32%;background:var(--red)">8/25</div></div>
+      <div class="bar-score" style="color:var(--red)">8/25</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;margin:20px 0 12px">우선 조치 사항</h3>
+  <table class="data-table">
+    <thead><tr><th>#</th><th>조치 항목</th><th>소요 시간</th><th>우선순위</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>H1 구조 수정 (모든 페이지)</td><td>2~4시간</td><td><span class="pill high">긴급</span></td></tr>
+      <tr><td>2</td><td>Meta description 130~155자로 확장</td><td>1시간</td><td><span class="pill high">긴급</span></td></tr>
+      <tr><td>3</td><td>홈페이지 title 태그 재작성</td><td>10분</td><td><span class="pill high">긴급</span></td></tr>
+      <tr><td>4</td><td>Google + Naver에 사이트맵 제출</td><td>30분</td><td><span class="pill high">긴급</span></td></tr>
+      <tr><td>5</td><td>FAQPage schema 구현</td><td>6시간</td><td><span class="pill med">보통</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:15px;margin:20px 0 12px">Featured Snippet 기회</h3>
+  <div class="tag-cloud">
+    <span class="tag">특허 선행기술조사 방법</span>
+    <span class="tag">AI 특허 분석 도구</span>
+    <span class="tag">특허 분류 자동화</span>
+    <span class="tag">선행기술 검색 팁</span>
+    <span class="tag">특허 무효심판 준비</span>
+    <span class="tag">IPC 분류 코드 찾기</span>
+  </div>
+</div>
+
+<!-- ===== FUNNEL ===== -->
+<div class="section" id="funnel">
+  <div class="section-header">
+    <h2>퍼널 분석</h2>
+    <span class="badge">54/100</span>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 style="font-size:15px;margin-bottom:16px">전환 퍼널</h3>
+      <div class="funnel">
+        <div class="funnel-step" style="width:100%;background:linear-gradient(90deg,var(--blue),var(--accent))">방문자 (Awareness)</div>
+        <div class="funnel-arrow">▼</div>
+        <div class="funnel-step" style="width:80%;background:linear-gradient(90deg,var(--accent),var(--purple))">무료 가입 (Interest)</div>
+        <div class="funnel-arrow">▼</div>
+        <div class="funnel-step" style="width:55%;background:linear-gradient(90deg,var(--purple),var(--pink))">체험판 활성화 (Trial)</div>
+        <div class="funnel-arrow">▼</div>
+        <div class="funnel-step" style="width:35%;background:linear-gradient(90deg,var(--pink),var(--orange))">Business 전환 (Conversion)</div>
+        <div class="funnel-arrow">▼</div>
+        <div class="funnel-step" style="width:20%;background:linear-gradient(90deg,var(--orange),var(--green))">Premium / Enterprise</div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:15px;margin-bottom:16px">핵심 문제점</h3>
+      <div class="info-card" style="margin-bottom:12px">
+        <h4>수동 승인 프로세스</h4>
+        <p>무료 가입 후 1영업일 대기 → 이탈률 증가. 자동 승인 또는 즉시 제한 접근 필요.</p>
+      </div>
+      <div class="info-card" style="margin-bottom:12px">
+        <h4>무료 티어 제한</h4>
+        <p>20pt/일 (약 60회/월) — 가치 입증에 불충분. 첫 7일 무제한 추천.</p>
+      </div>
+      <div class="info-card" style="margin-bottom:12px">
+        <h4>가격 페이지 부재</h4>
+        <p>별도 가격 페이지 없음. FAQ에 매몰. 독립 페이지 필요.</p>
+      </div>
+      <div class="info-card">
+        <h4>온보딩 경로 불명확</h4>
+        <p>가입 후 다음 단계가 불분명. 가이드 투어 또는 첫 검색 유도 필요.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;margin:24px 0 12px">가격 구조</h3>
+  <div class="three-col">
+    <div class="info-card" style="text-align:center;border-color:var(--green)">
+      <h4 style="color:var(--green)">Free</h4>
+      <p style="font-size:24px;font-weight:800;color:var(--text);margin:8px 0">20pt/일</p>
+      <p>~60회/월 검색</p>
+    </div>
+    <div class="info-card" style="text-align:center;border-color:var(--accent)">
+      <h4 style="color:var(--accent)">Business</h4>
+      <p style="font-size:24px;font-weight:800;color:var(--text);margin:8px 0">1,000pt/월</p>
+      <p>~100회/월 검색</p>
+    </div>
+    <div class="info-card" style="text-align:center;border-color:var(--pink)">
+      <h4 style="color:var(--pink)">Premium</h4>
+      <p style="font-size:24px;font-weight:800;color:var(--text);margin:8px 0">협의</p>
+      <p>맞춤 가격</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COMPETITOR ===== -->
+<div class="section" id="competitor">
+  <div class="section-header">
+    <h2>경쟁사 분석</h2>
+    <span class="badge">7개 경쟁사</span>
+  </div>
+
+  <table class="data-table">
+    <thead><tr><th>평가 항목</th><th>Tanalysis</th><th>WIPS-ON</th><th>Patentpia</th><th>일반 LLM</th></tr></thead>
+    <tbody>
+      <tr><td>특허 전문 AI</td><td style="color:var(--green);font-weight:700">9/10</td><td>6/10</td><td>5/10</td><td style="color:var(--red)">2/10</td></tr>
+      <tr><td>전문 검색</td><td style="color:var(--green);font-weight:700">9/10</td><td>5/10</td><td>5/10</td><td style="color:var(--red)">1/10</td></tr>
+      <tr><td>정확도/재현율</td><td style="color:var(--green);font-weight:700">9/10</td><td>5/10</td><td>5/10</td><td style="color:var(--red)">2/10</td></tr>
+      <tr><td>헤드라인 명확성</td><td style="color:var(--orange)">6/10</td><td style="color:var(--green)">7/10</td><td>6/10</td><td>-</td></tr>
+      <tr><td>가격 투명성</td><td style="color:var(--red)">3/10</td><td>6/10</td><td style="color:var(--green)">7/10</td><td>8/10</td></tr>
+      <tr><td>신뢰 시그널</td><td>6/10</td><td style="color:var(--green)">8/10</td><td>7/10</td><td style="color:var(--green)">9/10</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:15px;margin:24px 0 12px">Tanalysis 핵심 차별점</h3>
+  <div class="three-col">
+    <div class="info-card">
+      <h4>KIPO 데이터 학습</h4>
+      <p>거절/무효 결정문 데이터 기반 학습 — 유일한 모델</p>
+    </div>
+    <div class="info-card">
+      <h4>85% 재현율</h4>
+      <p>심사관 인용 대비 85% 선행문헌 발굴 · 경쟁사 4배</p>
+    </div>
+    <div class="info-card">
+      <h4>전문 검색 (Full-Text)</h4>
+      <p>초록만이 아닌 전문 검색 · 8천만 특허 30초 내 완료</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COPY ===== -->
+<div class="section" id="copy">
+  <div class="section-header">
+    <h2>카피 분석 & 제안</h2>
+    <span class="badge">54/100</span>
+  </div>
+
+  <h3 style="font-size:15px;margin-bottom:12px">카피 점수 상세</h3>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label">구체성 (Specificity)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:70%;background:var(--green)">7/10</div></div>
+      <div class="bar-score">7/10</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">명확성 (Clarity)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--orange)">6/10</div></div>
+      <div class="bar-score">6/10</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">설득력 (Persuasion)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--red)">5/10</div></div>
+      <div class="bar-score">5/10</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">감정 (Emotion)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--red)">4/10</div></div>
+      <div class="bar-score">4/10</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">행동 유도 (Action)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--red)">4/10</div></div>
+      <div class="bar-score">4/10</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;margin:24px 0 12px">헤드라인 제안 (Before → After)</h3>
+  <div class="info-card" style="margin-bottom:16px">
+    <h4 style="color:var(--red)">현재 (Before)</h4>
+    <p style="font-size:16px;color:var(--text);margin-top:8px">"업무 효율화, 정확한 특허 검색·분석부터"</p>
+  </div>
+  <div class="three-col">
+    <div class="info-card" style="border-color:var(--green)">
+      <h4 style="color:var(--green)">제안 1 (추천)</h4>
+      <p style="color:var(--text)">"다른 DB가 놓친 선행문헌, 타날리시스는 찾아냅니다. 재현율 85%."</p>
+    </div>
+    <div class="info-card" style="border-color:var(--accent2)">
+      <h4 style="color:var(--accent2)">제안 2</h4>
+      <p style="color:var(--text)">"심사관처럼 찾아드립니다. 특허 전문 AI, 타날리시스."</p>
+    </div>
+    <div class="info-card" style="border-color:var(--purple)">
+      <h4 style="color:var(--purple)">제안 3</h4>
+      <p style="color:var(--text)">"놓친 선행문헌이 나중에 문제가 됩니다. 타날리시스는 놓치지 않습니다."</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;margin:24px 0 12px">CTA 계층 구조 제안</h3>
+  <table class="data-table">
+    <thead><tr><th>위치</th><th>현재</th><th>제안</th><th>유형</th></tr></thead>
+    <tbody>
+      <tr><td>히어로 (Primary)</td><td>5개 CTA 경쟁</td><td>"무료로 시작하기"</td><td><span class="pill high">Primary</span></td></tr>
+      <tr><td>히어로 (Secondary)</td><td>-</td><td>"소개자료 받기" (텍스트 링크)</td><td><span class="pill med">Secondary</span></td></tr>
+      <tr><td>Enterprise</td><td>-</td><td>"우리 팀 도입 문의"</td><td><span class="pill low">Tertiary</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== BRAND VOICE ===== -->
+<div class="section" id="brand">
+  <div class="section-header">
+    <h2>브랜드 보이스</h2>
+    <span class="badge">일관성 8/10</span>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 style="font-size:15px;margin-bottom:12px">보이스 차원 분석</h3>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">대담함 (Bold)</div>
+          <div class="bar-track"><div class="bar-fill" style="width:70%;background:var(--accent)"></div></div>
+          <div class="bar-score">7/10</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">형식적 (Formal)</div>
+          <div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--blue)"></div></div>
+          <div class="bar-score">4/10</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">기술적 (Technical)</div>
+          <div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--blue)"></div></div>
+          <div class="bar-score">4/10</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">진지함 (Serious)</div>
+          <div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--purple)"></div></div>
+          <div class="bar-score">3/10</div>
+        </div>
+      </div>
+
+      <div class="info-card" style="margin-top:16px">
+        <h4>핵심 아키타입</h4>
+        <p style="color:var(--text)"><strong>Primary:</strong> The Authority (신뢰 + 전문성)</p>
+        <p style="color:var(--text)"><strong>Secondary:</strong> The Innovator (혁신 + 미래지향)</p>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:15px;margin-bottom:12px">핵심 보이스 요소</h3>
+      <ul style="font-size:13px;padding-left:18px;color:var(--muted)">
+        <li style="margin-bottom:8px">증거 기반 권위 ("85% 재현율", "경쟁사 대비 4배")</li>
+        <li style="margin-bottom:8px">실무자 대 실무자 어조 (peer-to-peer)</li>
+        <li style="margin-bottom:8px">직접적 경쟁 비교 ("타사 대비")</li>
+        <li style="margin-bottom:8px">문제 인정 → 해결 순서</li>
+        <li style="margin-bottom:8px">간결하고 효율적인 문장</li>
+        <li style="margin-bottom:8px">"변리사가 만들어 더 정확한" — 핵심 신뢰 시그널</li>
+      </ul>
+
+      <h3 style="font-size:15px;margin:20px 0 12px">핵심 키워드</h3>
+      <div class="tag-cloud">
+        <span class="tag">실무</span>
+        <span class="tag">전문가</span>
+        <span class="tag">변리사</span>
+        <span class="tag">심사관</span>
+        <span class="tag">효율</span>
+        <span class="tag">정확한</span>
+        <span class="tag">줄이다</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ADS ===== -->
+<div class="section" id="ads">
+  <div class="section-header">
+    <h2>광고 캠페인</h2>
+    <span class="badge">4개 캠페인</span>
+  </div>
+
+  <h3 style="font-size:15px;margin-bottom:12px">타겟 오디언스</h3>
+  <div class="score-grid" style="grid-template-columns:repeat(4,1fr)">
+    <div class="score-card blue"><div class="label">세그먼트 1</div><div class="value" style="font-size:16px">변리사 &<br>법률사무소</div></div>
+    <div class="score-card purple"><div class="label">세그먼트 2</div><div class="value" style="font-size:16px">사내 IP팀</div></div>
+    <div class="score-card accent"><div class="label">세그먼트 3</div><div class="value" style="font-size:16px">R&D &<br>연구팀</div></div>
+    <div class="score-card orange"><div class="label">세그먼트 4</div><div class="value" style="font-size:16px">IP 전략<br>매니저</div></div>
+  </div>
+
+  <h3 style="font-size:15px;margin:20px 0 12px">플랫폼별 목표 KPI</h3>
+  <table class="data-table">
+    <thead><tr><th>플랫폼</th><th>일 예산</th><th>목표 CPA</th><th>목표 CTR</th><th>전환율</th></tr></thead>
+    <tbody>
+      <tr><td>Google (선행기술)</td><td>₩150K~300K</td><td>₩30K~60K</td><td>5~10%</td><td>3~6%</td></tr>
+      <tr><td>Google (분류)</td><td>₩150K~300K</td><td>₩40K~70K</td><td>4~8%</td><td>2~5%</td></tr>
+      <tr><td>LinkedIn</td><td>₩200K~400K</td><td>₩80K~150K</td><td>0.4~0.8%</td><td>1~3%</td></tr>
+      <tr><td>디스플레이 리타게팅</td><td>₩100K~200K</td><td>₩20K~40K</td><td>0.15~0.4%</td><td>0.5~2%</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:15px;margin:20px 0 12px">예산 배분 (월간)</h3>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label">LinkedIn Ads</div>
+      <div class="bar-track"><div class="bar-fill" style="width:44%;background:var(--blue)">₩6M~12M</div></div>
+      <div class="bar-score">44%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Google Ads</div>
+      <div class="bar-track"><div class="bar-fill" style="width:33%;background:var(--green)">₩4.5M~9M</div></div>
+      <div class="bar-score">33%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">디스플레이</div>
+      <div class="bar-track"><div class="bar-fill" style="width:22%;background:var(--orange)">₩3M~6M</div></div>
+      <div class="bar-score">22%</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== EMAIL ===== -->
+<div class="section" id="email">
+  <div class="section-header">
+    <h2>이메일 시퀀스</h2>
+    <span class="badge">4개 시퀀스 · 16개 이메일</span>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 style="font-size:15px;margin-bottom:12px">시퀀스 구성</h3>
+      <div class="info-card" style="margin-bottom:12px;border-left:3px solid var(--green)">
+        <h4 style="color:var(--green)">1. Welcome 시퀀스</h4>
+        <p>신규 무료 사용자 온보딩 · 5개 이메일 · 8일간</p>
+        <p style="margin-top:4px">예상 오픈율: 35~45%</p>
+      </div>
+      <div class="info-card" style="margin-bottom:12px;border-left:3px solid var(--accent)">
+        <h4 style="color:var(--accent)">2. Trial-to-Paid 너처링</h4>
+        <p>무료→Business 전환 · 7개 이메일 · 21일간</p>
+        <p style="margin-top:4px">핵심: ROI 설득 + 정부 바우처 긴급성</p>
+      </div>
+      <div class="info-card" style="margin-bottom:12px;border-left:3px solid var(--orange)">
+        <h4 style="color:var(--orange)">3. Re-engagement</h4>
+        <p>휴면 사용자 재활성화 · 3개 이메일 · 10일간</p>
+        <p style="margin-top:4px">대상: 30일+ 비활성 사용자</p>
+      </div>
+      <div class="info-card" style="border-left:3px solid var(--blue)">
+        <h4 style="color:var(--blue)">4. Feature Announcement</h4>
+        <p>신기능 공지 · 1개 템플릿 · 재사용 가능</p>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:15px;margin-bottom:12px">Welcome 시퀀스 타임라인</h3>
+      <div class="timeline">
+        <div class="timeline-item green"><h4>W-1: 환영 + 온보딩</h4><p>즉시 발송 · 첫 검색 유도</p></div>
+        <div class="timeline-item green"><h4>W-2: 파운더 스토리</h4><p>Day 1 · 신뢰 구축</p></div>
+        <div class="timeline-item green"><h4>W-3: 실전 활용 팁 3가지</h4><p>Day 3 · 정확도 향상 노하우</p></div>
+        <div class="timeline-item green"><h4>W-4: 고객 사례</h4><p>Day 5 · 케이스 스터디</p></div>
+        <div class="timeline-item green"><h4>W-5: Business 플랜 제안</h4><p>Day 8 · 업그레이드 피치</p></div>
+      </div>
+
+      <h3 style="font-size:15px;margin:20px 0 12px">목표 KPI</h3>
+      <table class="data-table">
+        <thead><tr><th>지표</th><th>벤치마크</th></tr></thead>
+        <tbody>
+          <tr><td>오픈율</td><td>25~45%</td></tr>
+          <tr><td>클릭률</td><td>3~8%</td></tr>
+          <tr><td>Free→Business 전환</td><td>트래킹 필요</td></tr>
+          <tr><td>미팅 예약률</td><td>트래킹 필요</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SOCIAL ===== -->
+<div class="section" id="social">
+  <div class="section-header">
+    <h2>소셜 콘텐츠 캘린더</h2>
+    <span class="badge">30일 · 24+ 포스트</span>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 style="font-size:15px;margin-bottom:12px">콘텐츠 필러 믹스</h3>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">교육 (IP Insights)</div>
+          <div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--blue)">40%</div></div>
+          <div class="bar-score">40%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">소셜 프루프</div>
+          <div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--green)">15%</div></div>
+          <div class="bar-score">15%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">제품 활용법</div>
+          <div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--accent)">15%</div></div>
+          <div class="bar-score">15%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">업계 뉴스</div>
+          <div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--orange)">15%</div></div>
+          <div class="bar-score">15%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">참여 유도</div>
+          <div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--pink)">10%</div></div>
+          <div class="bar-score">10%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">프로모션</div>
+          <div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--red)">5%</div></div>
+          <div class="bar-score">5%</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:15px;margin-bottom:12px">주간 테마</h3>
+      <div class="timeline">
+        <div class="timeline-item green"><h4>Week 1: Awareness</h4><p>Mar 9~13 · "왜 지금 AI 특허 검색인가"</p></div>
+        <div class="timeline-item green"><h4>Week 2: Product Deep-Dive</h4><p>Mar 16~20 · "타날리시스가 다른 이유"</p></div>
+        <div class="timeline-item orange"><h4>Week 3: Trust Building</h4><p>Mar 23~27 · "전문가들은 이미 사용 중"</p></div>
+        <div class="timeline-item red"><h4>Week 4: Conversion</h4><p>Mar 30~Apr 3 · "지금 시작하세요"</p></div>
+        <div class="timeline-item"><h4>Week 5: Advanced</h4><p>Apr 6~9 · "전략적 IP 관리"</p></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;margin:20px 0 12px">월간 목표 KPI</h3>
+  <div class="score-grid" style="grid-template-columns:repeat(4,1fr)">
+    <div class="score-card accent"><div class="label">LinkedIn 참여율</div><div class="value" style="font-size:24px">3%+</div></div>
+    <div class="score-card blue"><div class="label">포스트당 댓글</div><div class="value" style="font-size:24px">5+</div></div>
+    <div class="score-card green"><div class="label">팔로워 증가</div><div class="value" style="font-size:24px">100+</div><div class="sub">/월</div></div>
+    <div class="score-card purple"><div class="label">미팅 요청</div><div class="value" style="font-size:24px">2+</div><div class="sub">/월</div></div>
+  </div>
+
+  <h3 style="font-size:15px;margin:20px 0 12px">해시태그 전략</h3>
+  <div class="tag-cloud">
+    <span class="tag">#특허검색</span>
+    <span class="tag">#선행기술조사</span>
+    <span class="tag">#AI특허분석</span>
+    <span class="tag">#특허분류</span>
+    <span class="tag">#지식재산</span>
+    <span class="tag">#변리사</span>
+    <span class="tag">#타날리시스</span>
+    <span class="tag">#PatentAI</span>
+    <span class="tag">#IPStrategy</span>
+    <span class="tag">#PriorArt</span>
+  </div>
+</div>
+
+<!-- ===== REPORT ===== -->
+<div class="section" id="report">
+  <div class="section-header">
+    <h2>종합 보고서 요약</h2>
+    <span class="badge">Executive Summary</span>
+  </div>
+
+  <div class="info-card" style="margin-bottom:20px;border-left:3px solid var(--accent2)">
+    <h4 style="color:var(--accent2);font-size:16px">핵심 메시지</h4>
+    <p style="color:var(--text);font-size:14px;margin-top:8px">
+      Tanalysis는 <strong>"카테고리를 정의하는"</strong> 기술 자산을 보유하고 있으나,
+      <strong>전환 아키텍처</strong>와 <strong>승인 프로세스 마찰</strong>이 성장을 제한하고 있습니다.
+    </p>
+    <p style="color:var(--muted);font-size:13px;margin-top:8px">
+      85% 재현율이라는 핵심 지표가 퍼널 깊숙이 묻혀 있으며,
+      첫 방문자가 "ChatGPT와 뭐가 다른지" 5초 내에 파악할 수 없는 상태입니다.
+    </p>
+  </div>
+
+  <h3 style="font-size:15px;margin-bottom:12px">전체 실행 로드맵</h3>
+  <div class="three-col">
+    <div class="info-card" style="border-top:3px solid var(--green)">
+      <h4 style="color:var(--green)">이번 주 (Quick Wins)</h4>
+      <ul>
+        <li>H1 헤드라인 재작성</li>
+        <li>정부 바우처 CTA 추가</li>
+        <li>Meta description 수정</li>
+        <li>H1 태그 구조 정리</li>
+        <li>이미지 alt 텍스트 추가</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top:3px solid var(--orange)">
+      <h4 style="color:var(--orange)">이번 달 (Medium-Term)</h4>
+      <ul>
+        <li>주간 리포트 CTA 추가</li>
+        <li>히어로 데모 영상 제작</li>
+        <li>Welcome 이메일 시퀀스 구축</li>
+        <li>Schema markup 구현</li>
+        <li>가격 페이지 독립 생성</li>
+        <li>소셜 캘린더 Week 1~2 실행</li>
+      </ul>
+    </div>
+    <div class="info-card" style="border-top:3px solid var(--accent)">
+      <h4 style="color:var(--accent)">이번 분기 (Strategic)</h4>
+      <ul>
+        <li>Google Ads 캠페인 런칭</li>
+        <li>LinkedIn Ads 캠페인 런칭</li>
+        <li>Trial-to-Paid 너처링 자동화</li>
+        <li>블로그/콘텐츠 마케팅 시작</li>
+        <li>온보딩 플로우 개선</li>
+        <li>리타게팅 캠페인 구축</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="info-card" style="margin-top:20px;text-align:center;border-color:var(--accent)">
+    <p style="color:var(--muted);font-size:13px">예상 종합 효과 (3~6개월)</p>
+    <p style="font-size:32px;font-weight:800;color:var(--accent2);margin:8px 0">리드 볼륨 +40~80%</p>
+    <p style="color:var(--muted);font-size:13px">체험판 전환율 +15~25% 개선</p>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+// Sidebar scroll sync
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.sidebar a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      const id = entry.target.id;
+      const active = document.querySelector(`.sidebar a[href="#${id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(s => observer.observe(s));
+
+// Smooth scroll
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Animate bars on scroll
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fills = entry.target.querySelectorAll('.bar-fill');
+      fills.forEach(fill => {
+        const w = fill.style.width;
+        fill.style.width = '0%';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => { fill.style.width = w; });
+        });
+      });
+      barObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.bar-chart').forEach(c => barObserver.observe(c));
+</script>
+
+</body>
+</html>
