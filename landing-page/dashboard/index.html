@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>랜딩페이지 CRO 대시보드 — 타날리시스</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #6541f2;
+      --brand-deep: #312080;
+      --brand-light: #8b6cff;
+      --brand-lavender: #c29ef0;
+      --bg-dark: #0f1117;
+      --bg-card: #1a1c25;
+      --bg-card-hover: #22242f;
+      --bg-surface: #14161e;
+      --border: rgba(255,255,255,0.06);
+      --border-active: rgba(101,65,242,0.4);
+      --text-primary: #f0f0f5;
+      --text-secondary: #a0a0b0;
+      --text-muted: #6b6b80;
+      --green: #22c55e;
+      --green-bg: rgba(34,197,94,0.1);
+      --red: #ef4444;
+      --red-bg: rgba(239,68,68,0.1);
+      --yellow: #eab308;
+      --yellow-bg: rgba(234,179,8,0.1);
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+
+    html { font-size: 15px; scroll-behavior: smooth; }
+    body {
+      font-family: "Pretendard Variable", "Pretendard", -apple-system, system-ui, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── SIDEBAR ── */
+    .layout { display: flex; min-height: 100vh; }
+    .sidebar {
+      width: 280px;
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border);
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-header h1 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--brand-light), var(--brand-lavender));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .sidebar-header p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .sidebar-nav { flex: 1; padding: 12px 0; }
+    .nav-section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      padding: 16px 20px 6px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 20px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.15s;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+    }
+    .nav-item:hover { background: var(--bg-card); color: var(--text-primary); }
+    .nav-item.active {
+      color: var(--brand-light);
+      background: rgba(101,65,242,0.08);
+      border-left-color: var(--brand);
+    }
+    .nav-item .badge {
+      margin-left: auto;
+      font-size: 0.65rem;
+      padding: 2px 7px;
+      border-radius: 100px;
+      font-weight: 700;
+    }
+    .badge-high { background: var(--green-bg); color: var(--green); }
+    .badge-mid { background: var(--yellow-bg); color: var(--yellow); }
+    .badge-new { background: rgba(101,65,242,0.15); color: var(--brand-light); }
+
+    /* ── MAIN ── */
+    .main { margin-left: 280px; flex: 1; }
+
+    /* ── TOP BAR / SCORE STRIP ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(15,17,23,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .score-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .score-ring {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1rem;
+    }
+    .score-ring.green { background: var(--green-bg); color: var(--green); border: 2px solid rgba(34,197,94,0.3); }
+    .score-ring.yellow { background: var(--yellow-bg); color: var(--yellow); border: 2px solid rgba(234,179,8,0.3); }
+    .score-ring.red { background: var(--red-bg); color: var(--red); border: 2px solid rgba(239,68,68,0.3); }
+    .score-label { font-size: 0.75rem; color: var(--text-muted); }
+    .score-value { font-size: 0.85rem; font-weight: 700; }
+    .score-delta {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+    .delta-up { background: var(--green-bg); color: var(--green); }
+    .delta-down { background: var(--red-bg); color: var(--red); }
+
+    .topbar-spacer { flex: 1; }
+    .topbar-meta { font-size: 0.75rem; color: var(--text-muted); text-align: right; }
+
+    /* ── CONTENT ── */
+    .content { padding: 32px; }
+
+    /* ── SECTION CARDS ── */
+    .change-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .change-card:hover { border-color: var(--border-active); }
+    .change-card.active { border-color: var(--brand); }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .card-number {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .card-number.high { background: var(--green-bg); color: var(--green); }
+    .card-number.mid { background: var(--yellow-bg); color: var(--yellow); }
+    .card-number.new-feat { background: rgba(101,65,242,0.15); color: var(--brand-light); }
+
+    .card-title-group { flex: 1; min-width: 0; }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .card-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .card-tags { display: flex; gap: 6px; flex-shrink: 0; }
+    .tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .tag-quick { background: var(--green-bg); color: var(--green); }
+    .tag-strategic { background: rgba(101,65,242,0.15); color: var(--brand-light); }
+    .tag-copy { background: rgba(234,179,8,0.1); color: var(--yellow); }
+    .tag-design { background: rgba(59,130,246,0.1); color: #60a5fa; }
+    .tag-ux { background: rgba(168,85,247,0.1); color: #c084fc; }
+
+    .card-chevron {
+      width: 20px; height: 20px;
+      transition: transform 0.2s;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .change-card.open .card-chevron { transform: rotate(180deg); }
+
+    .card-body {
+      display: none;
+      padding: 0 24px 24px;
+    }
+    .change-card.open .card-body { display: block; }
+
+    /* ── BEFORE / AFTER COMPARISON ── */
+    .comparison-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .comp-col {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .comp-label {
+      padding: 8px 14px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .comp-label.before { background: var(--red-bg); color: var(--red); }
+    .comp-label.after { background: var(--green-bg); color: var(--green); }
+    .comp-img-wrap {
+      position: relative;
+      background: #0a0b0f;
+      min-height: 200px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .comp-img-wrap img {
+      width: 100%;
+      display: block;
+      transition: transform 0.3s;
+      cursor: zoom-in;
+    }
+    .comp-img-wrap img.zoomed {
+      transform: scale(2);
+      cursor: zoom-out;
+    }
+    .comp-img-wrap .no-img {
+      padding: 40px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* ── SLIDER COMPARISON ── */
+    .slider-compare {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      cursor: col-resize;
+      user-select: none;
+    }
+    .slider-compare img {
+      display: block;
+      width: 100%;
+    }
+    .slider-overlay {
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      overflow: hidden;
+    }
+    .slider-overlay img {
+      display: block;
+      min-width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: left top;
+    }
+    .slider-handle {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 4px;
+      background: var(--brand);
+      cursor: col-resize;
+      z-index: 5;
+    }
+    .slider-handle::before {
+      content: "⟨ ⟩";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--brand);
+      color: white;
+      font-size: 10px;
+      padding: 6px 4px;
+      border-radius: 8px;
+      white-space: nowrap;
+      letter-spacing: 2px;
+    }
+    .slider-labels {
+      position: absolute;
+      top: 10px;
+      left: 0; right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 14px;
+      pointer-events: none;
+      z-index: 6;
+    }
+    .slider-labels span {
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+    .slider-labels .sl-before { background: rgba(239,68,68,0.85); color: white; }
+    .slider-labels .sl-after { background: rgba(34,197,94,0.85); color: white; }
+
+    /* ── ANALYSIS TEXT ── */
+    .analysis {
+      background: var(--bg-surface);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+    .analysis h4 {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--brand-light);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .analysis p, .analysis li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .analysis ul { padding-left: 18px; margin-top: 6px; }
+    .analysis li { margin-bottom: 4px; }
+    .analysis .highlight {
+      color: var(--brand-lavender);
+      font-weight: 700;
+    }
+    .analysis .metric {
+      display: inline-block;
+      background: var(--green-bg);
+      color: var(--green);
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    /* ── IMPACT BAR ── */
+    .impact-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .impact-item {
+      background: var(--bg-surface);
+      border-radius: 8px;
+      padding: 12px 16px;
+      flex: 1;
+      min-width: 140px;
+    }
+    .impact-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .impact-value {
+      font-size: 1.2rem;
+      font-weight: 900;
+      margin-top: 4px;
+    }
+    .impact-value.up { color: var(--green); }
+    .impact-value.down { color: var(--red); }
+    .impact-value.neutral { color: var(--yellow); }
+
+    /* ── FULL-PAGE COMPARISON ── */
+    .fullpage-section {
+      margin-bottom: 32px;
+    }
+    .fullpage-section h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    /* ── OVERVIEW GRID ── */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .overview-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .overview-stat .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .overview-stat .stat-value {
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-top: 6px;
+    }
+    .overview-stat .stat-sub {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* ── VIEW TOGGLE ── */
+    .view-toggle {
+      display: inline-flex;
+      gap: 2px;
+      background: var(--bg-surface);
+      padding: 3px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+    .view-btn {
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+    .view-btn.active { background: var(--brand); color: white; }
+    .view-btn:hover:not(.active) { color: var(--text-primary); }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(8px);
+      cursor: zoom-out;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.show { display: flex; }
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .change-card {
+      animation: fadeInUp 0.4s ease-out both;
+    }
+    .change-card:nth-child(1) { animation-delay: 0.05s; }
+    .change-card:nth-child(2) { animation-delay: 0.1s; }
+    .change-card:nth-child(3) { animation-delay: 0.15s; }
+    .change-card:nth-child(4) { animation-delay: 0.2s; }
+    .change-card:nth-child(5) { animation-delay: 0.25s; }
+    .change-card:nth-child(6) { animation-delay: 0.3s; }
+    .change-card:nth-child(7) { animation-delay: 0.35s; }
+    .change-card:nth-child(8) { animation-delay: 0.4s; }
+    .change-card:nth-child(9) { animation-delay: 0.45s; }
+    .change-card:nth-child(10) { animation-delay: 0.5s; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .comparison-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>CRO 대시보드</h1>
+      <p>tanalysis.co.kr → 신규 랜딩페이지</p>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">개요</div>
+      <a class="nav-item active" href="#overview" data-section="overview">
+        📊 요약 및 점수
+      </a>
+      <a class="nav-item" href="#fullpage" data-section="fullpage">
+        🖼 전체 페이지 비교
+      </a>
+
+      <div class="nav-section-label">변경사항 (10)</div>
+      <a class="nav-item" href="#change-1" data-section="change-1">
+        1. 헤드라인 재작성
+        <span class="badge badge-high">높음</span>
+      </a>
+      <a class="nav-item" href="#change-2" data-section="change-2">
+        2. 긴급 배너
+        <span class="badge badge-high">높음</span>
+      </a>
+      <a class="nav-item" href="#change-3" data-section="change-3">
+        3. 핵심 수치 바
+        <span class="badge badge-high">높음</span>
+      </a>
+      <a class="nav-item" href="#change-4" data-section="change-4">
+        4. 비교 테이블
+        <span class="badge badge-high">높음</span>
+      </a>
+      <a class="nav-item" href="#change-5" data-section="change-5">
+        5. 주간리포트 CTA
+        <span class="badge badge-mid">중간</span>
+      </a>
+      <a class="nav-item" href="#change-6" data-section="change-6">
+        6. 검색 입력 데모
+        <span class="badge badge-new">신규</span>
+      </a>
+      <a class="nav-item" href="#change-7" data-section="change-7">
+        7. 가격 섹션
+        <span class="badge badge-high">높음</span>
+      </a>
+      <a class="nav-item" href="#change-8" data-section="change-8">
+        8. CTA 체계화
+        <span class="badge badge-mid">중간</span>
+      </a>
+      <a class="nav-item" href="#change-9" data-section="change-9">
+        9. 신뢰 지표 바
+        <span class="badge badge-mid">중간</span>
+      </a>
+      <a class="nav-item" href="#change-10" data-section="change-10">
+        10. 디자인 일관성
+        <span class="badge badge-new">시스템</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <div class="main">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="score-card">
+        <div class="score-ring yellow">61</div>
+        <div>
+          <div class="score-label">기존 점수</div>
+          <div class="score-value">61 / 100</div>
+        </div>
+      </div>
+      <div style="font-size: 1.5rem; color: var(--text-muted);">→</div>
+      <div class="score-card">
+        <div class="score-ring green">84</div>
+        <div>
+          <div class="score-label">예상 점수</div>
+          <div class="score-value">84 / 100</div>
+        </div>
+      </div>
+      <span class="score-delta delta-up">+23 pts</span>
+      <div class="topbar-spacer"></div>
+      <div class="topbar-meta">
+        <div>분석일: 2026-03-08</div>
+        <div>10개 변경 · 7개 즉시 적용 가능</div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ═══ OVERVIEW ═══ -->
+      <section id="overview">
+        <div class="overview-grid">
+          <div class="overview-stat">
+            <div class="stat-label">감사 점수</div>
+            <div class="stat-value" style="color: var(--yellow);">61 → <span style="color: var(--green);">84</span></div>
+            <div class="stat-sub">+23점 개선</div>
+          </div>
+          <div class="overview-stat">
+            <div class="stat-label">변경 항목</div>
+            <div class="stat-value" style="color: var(--text-primary);">10</div>
+            <div class="stat-sub">즉시 적용 7개, 전략적 3개</div>
+          </div>
+          <div class="overview-stat">
+            <div class="stat-label">예상 전환율 영향</div>
+            <div class="stat-value" style="color: var(--green);">+40-60%</div>
+            <div class="stat-sub">약 2%에서 약 3-3.2%로 예상</div>
+          </div>
+          <div class="overview-stat">
+            <div class="stat-label">사용된 디자인 토큰</div>
+            <div class="stat-value" style="color: var(--brand-light);">65+</div>
+            <div class="stat-sub">DESIGN-SYSTEM.json 기반</div>
+          </div>
+          <div class="overview-stat">
+            <div class="stat-label">CTA 표준화</div>
+            <div class="stat-value" style="color: var(--text-primary);">9 → 3</div>
+            <div class="stat-sub">주요 / 보조 / 부가</div>
+          </div>
+          <div class="overview-stat">
+            <div class="stat-label">페이지 유형</div>
+            <div class="stat-value" style="font-size: 1.2rem; color: var(--brand-lavender);">B2B SaaS</div>
+            <div class="stat-sub">목표 전환율: 3-7% (양호), 10%+ (우수)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ FULL PAGE COMPARE ═══ -->
+      <section id="fullpage" class="fullpage-section">
+        <h3>전체 페이지 비교</h3>
+        <div class="view-toggle">
+          <button class="view-btn active" data-view="side">나란히 보기</button>
+          <button class="view-btn" data-view="slider">슬라이더</button>
+        </div>
+
+        <!-- Side by side view -->
+        <div id="view-side" class="comparison-row">
+          <div class="comp-col">
+            <div class="comp-label before">● 기존 (tanalysis.co.kr)</div>
+            <div class="comp-img-wrap">
+              <img src="screenshots/original/00-full-page.png" alt="Original full page" onclick="openLightbox(this.src)" />
+            </div>
+          </div>
+          <div class="comp-col">
+            <div class="comp-label after">● 신규 랜딩페이지</div>
+            <div class="comp-img-wrap">
+              <img src="screenshots/new/00-full-page.png" alt="New full page" onclick="openLightbox(this.src)" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider view -->
+        <div id="view-slider" style="display:none;" class="slider-compare" data-before="screenshots/original/00-full-page.png" data-after="screenshots/new/00-full-page.png">
+          <img src="screenshots/new/00-full-page.png" alt="New" />
+          <div class="slider-overlay" style="width:50%;">
+            <img src="screenshots/original/00-full-page.png" alt="Original" />
+          </div>
+          <div class="slider-handle" style="left:50%;"></div>
+          <div class="slider-labels">
+            <span class="sl-before">기존</span>
+            <span class="sl-after">신규</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ CHANGE 1: Headline Rewrite ═══ -->
+      <div class="change-card open" id="change-1">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-number high">1</div>
+          <div class="card-title-group">
+            <div class="card-title">헤드라인 재작성</div>
+            <div class="card-subtitle">감사 즉시적용 #1 · 히어로 섹션</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-quick">즉시 적용</span>
+            <span class="tag tag-copy">카피</span>
+          </div>
+          <svg class="card-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="comparison-row">
+            <div class="comp-col">
+              <div class="comp-label before">● 변경 전</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/original/03-hero.png" alt="Original hero" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+            <div class="comp-col">
+              <div class="comp-label after">● 변경 후</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/new/03-hero.png" alt="New hero" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+          </div>
+          <div class="analysis">
+            <h4>변경 내용</h4>
+            <p><strong>변경 전:</strong> "업무 효율화, 정확한 특허 검색·분석부터" — 모든 B2B SaaS가 쓰는 일반적인 효율성 문구.</p>
+            <p><strong>변경 후:</strong> "심사관 수준의 정확도로 특허를 검색·분류하는 AI" — 구체적인 성능 차별점을 전면에 배치.</p>
+            <ul>
+              <li><span class="metric">재현율 85%</span> 수치가 방문자가 가장 먼저 보는 요소로 변경</li>
+              <li>혜택 중심의 초구체적 헤드라인 (심사관 수준의 정확도)</li>
+              <li>10단어 이내 — 5초 이해도 테스트 통과</li>
+            </ul>
+          </div>
+          <div class="impact-row">
+            <div class="impact-item">
+              <div class="impact-label">예상 전환율 영향</div>
+              <div class="impact-value up">+15-25%</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">구현 난이도</div>
+              <div class="impact-value neutral">낮음</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">섹션 점수</div>
+              <div class="impact-value up">5 → 8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ CHANGE 2: Urgency Banner ═══ -->
+      <div class="change-card" id="change-2">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-number high">2</div>
+          <div class="card-title-group">
+            <div class="card-title">데이터바우처 긴급 배너</div>
+            <div class="card-subtitle">감사 즉시적용 #8 · 첫 화면 상단</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-quick">즉시 적용</span>
+            <span class="tag tag-ux">UX</span>
+          </div>
+          <svg class="card-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="comparison-row">
+            <div class="comp-col">
+              <div class="comp-label before">● 변경 전</div>
+              <div class="comp-img-wrap">
+                <div class="no-img">기존 홈페이지에는 긴급 배너가 없었습니다.<br/>보조금 정보는 /reportbymail 페이지에 숨겨져 있었습니다.</div>
+              </div>
+            </div>
+            <div class="comp-col">
+              <div class="comp-label after">● 변경 후</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/new/01-urgency-banner.png" alt="Urgency banner" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+          </div>
+          <div class="analysis">
+            <h4>변경 내용</h4>
+            <p><span class="highlight">최대 90% 정부 보조금</span> (마감 3/31) 정보가 /reportbymail 페이지에만 있어 홈페이지 방문자에게는 보이지 않았습니다.</p>
+            <p>이제 페이지 최상단에 보라색 그라데이션 배너로 항상 노출됩니다. 이것은 <strong>한국 B2B SaaS에서 가장 강력한 구매 트리거</strong>입니다 — 금전적 혜택 + 마감 긴급성의 조합.</p>
+          </div>
+          <div class="impact-row">
+            <div class="impact-item">
+              <div class="impact-label">예상 전환율 영향</div>
+              <div class="impact-value up">+10-20%</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">구현 난이도</div>
+              <div class="impact-value neutral">낮음</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">긴급성 점수</div>
+              <div class="impact-value up">2 → 8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ CHANGE 3: Stat Strip ═══ -->
+      <div class="change-card" id="change-3">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-number high">3</div>
+          <div class="card-title-group">
+            <div class="card-title">히어로 핵심 수치 바</div>
+            <div class="card-subtitle">감사 즉시적용 #5 · 사회적 증거</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-quick">즉시 적용</span>
+            <span class="tag tag-design">디자인</span>
+          </div>
+          <svg class="card-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="comparison-row">
+            <div class="comp-col">
+              <div class="comp-label before">● 변경 전</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/original/section-01.png" alt="Original hero area" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+            <div class="comp-col">
+              <div class="comp-label after">● 변경 후</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/new/03-hero.png" alt="New hero with stats" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+          </div>
+          <div class="analysis">
+            <h4>변경 내용</h4>
+            <p>핵심 수치 (<span class="metric">85%</span>, <span class="metric">8천만</span>, <span class="metric">90%+</span>, <span class="metric">30초</span>)가 기능 하위 페이지에만 있었고 홈페이지 히어로에는 없었습니다.</p>
+            <p>변경 후: CTA 버튼 바로 아래에 4열 수치 바 배치. 숫자는 즉각적인 신뢰를 형성합니다 — 문장으로는 불가능한 효과입니다.</p>
+          </div>
+          <div class="impact-row">
+            <div class="impact-item">
+              <div class="impact-label">예상 전환율 영향</div>
+              <div class="impact-value up">+10-15%</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">구현 난이도</div>
+              <div class="impact-value neutral">낮음</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">신뢰 점수</div>
+              <div class="impact-value up">4 → 8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ CHANGE 4: Comparison Table ═══ -->
+      <div class="change-card" id="change-4">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-number high">4</div>
+          <div class="card-title-group">
+            <div class="card-title">비교 테이블 상단 이동</div>
+            <div class="card-subtitle">감사 즉시적용 #4 · 가치 제안</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-quick">즉시 적용</span>
+            <span class="tag tag-ux">UX</span>
+          </div>
+          <svg class="card-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="comparison-row">
+            <div class="comp-col">
+              <div class="comp-label before">● 변경 전 (스크롤 3회 이상 아래 위치)</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/original/section-04.png" alt="Original comparison area" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+            <div class="comp-col">
+              <div class="comp-label after">● 변경 후 (섹션 #2, 히어로 바로 다음)</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/new/04-comparison-table.png" alt="New comparison table" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+          </div>
+          <div class="analysis">
+            <h4>변경 내용</h4>
+            <p>"도입 전/후" 테이블은 <span class="highlight">가치를 가장 명확하게 전달하는 요소</span>였지만 스크롤 3회 이상 아래에 묻혀 있었습니다.</p>
+            <p>이제 섹션 #2로, 히어로 바로 다음에 배치됩니다. 색상 구분 컬럼 (<span style="color:var(--red)">빨간색</span> = 도입 전, <span style="color:var(--brand-light)">보라색</span> = 도입 후)으로 직관적인 대비를 구현했습니다.</p>
+          </div>
+          <div class="impact-row">
+            <div class="impact-item">
+              <div class="impact-label">예상 전환율 영향</div>
+              <div class="impact-value up">+15-25%</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">구현 난이도</div>
+              <div class="impact-value neutral">낮음</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">가치 제안 점수</div>
+              <div class="impact-value up">5 → 9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ CHANGE 5: Weekly Report ═══ -->
+      <div class="change-card" id="change-5">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-number mid">5</div>
+          <div class="card-title-group">
+            <div class="card-title">주간리포트 CTA 동등 배치</div>
+            <div class="card-subtitle">감사 즉시적용 #2 · 전환 퍼널</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-strategic">전략적</span>
+            <span class="tag tag-design">디자인</span>
+          </div>
+          <svg class="card-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="comparison-row">
+            <div class="comp-col">
+              <div class="comp-label before">● 변경 전</div>
+              <div class="comp-img-wrap">
+                <div class="no-img">주간리포트가 보조 내비게이션에 숨겨져 있었습니다.<br/>홈페이지에는 전혀 노출되지 않았습니다.</div>
+              </div>
+            </div>
+            <div class="comp-col">
+              <div class="comp-label after">● 변경 후</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/new/07-weekly-report.png" alt="Weekly report section" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+          </div>
+          <div class="analysis">
+            <h4>변경 내용</h4>
+            <p>감사에서 주간리포트를 <span class="highlight">"사이트에서 전략적으로 가장 흥미로운 제품"</span>으로 식별했습니다 — 풀 트라이얼을 아직 고려하지 않는 임원진을 위한 낮은 진입 장벽의 접점입니다.</p>
+            <p>이제 실제 샘플 데이터(NAVER/KAKAO/NAVER LABS)가 포함된 모의 리포트 카드와 함께 전용 섹션으로 배치되었습니다.</p>
+          </div>
+          <div class="impact-row">
+            <div class="impact-item">
+              <div class="impact-label">예상 전환율 영향</div>
+              <div class="impact-value up">+5-10%</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">구현 난이도</div>
+              <div class="impact-value neutral">보통</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">퍼널 다양성</div>
+              <div class="impact-value up">1 → 2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ CHANGE 6: Search Input Demo ═══ -->
+      <div class="change-card" id="change-6">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-number new-feat">6</div>
+          <div class="card-title-group">
+            <div class="card-title">검색 입력 데모</div>
+            <div class="card-subtitle">신규 기능 · 인터랙티브 요소</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-strategic">신규</span>
+            <span class="tag tag-ux">UX</span>
+          </div>
+          <svg class="card-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="comparison-row">
+            <div class="comp-col">
+              <div class="comp-label before">● 변경 전</div>
+              <div class="comp-img-wrap">
+                <div class="no-img">홈페이지에 인터랙티브 요소가 없었습니다.<br/>순수 정보 제공 콘텐츠만 존재.</div>
+              </div>
+            </div>
+            <div class="comp-col">
+              <div class="comp-label after">● 변경 후</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/new/03-hero.png" alt="Hero with search input" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+          </div>
+          <div class="analysis">
+            <h4>변경 내용</h4>
+            <p>실제 검색 입력창의 복제본 (추출된 스타일: <code>#f0f1f5</code> 배경, <code>8px</code> 라운드, <code>16px 20px</code> 패딩)과 원본 placeholder 텍스트를 적용했습니다.</p>
+            <p>버튼 클릭 시 회원가입으로 연결됩니다. 방문자에게 가입 전 <span class="highlight">제품의 실제 느낌</span>을 체험하게 합니다.</p>
+          </div>
+          <div class="impact-row">
+            <div class="impact-item">
+              <div class="impact-label">예상 전환율 영향</div>
+              <div class="impact-value up">+5-10%</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">구현 난이도</div>
+              <div class="impact-value neutral">낮음</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">사용자 참여</div>
+              <div class="impact-value up">수동 → 능동</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ CHANGE 7: Pricing Section ═══ -->
+      <div class="change-card" id="change-7">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-number high">7</div>
+          <div class="card-title-group">
+            <div class="card-title">가격 섹션</div>
+            <div class="card-subtitle">감사 전략적 권고 #4 · 이의 처리</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-strategic">전략적</span>
+            <span class="tag tag-design">디자인</span>
+          </div>
+          <svg class="card-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="comparison-row">
+            <div class="comp-col">
+              <div class="comp-label before">● 변경 전 (FAQ에 숨겨져 있었음)</div>
+              <div class="comp-img-wrap">
+                <div class="no-img">가격 정보가 /faq/point-guide의 FAQ 안에 숨겨져 있었습니다<br/>"전환에 가장 적대적인 위치" — 마케팅 감사</div>
+              </div>
+            </div>
+            <div class="comp-col">
+              <div class="comp-label after">● 변경 후 (전용 섹션)</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/new/09-pricing.png" alt="Pricing section" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+          </div>
+          <div class="analysis">
+            <h4>변경 내용</h4>
+            <p>3단계 요금제 (Free 20pt/일, Business 1,000pt/월, Premium 협의)를 기능 비교와 함께 랜딩페이지에 직접 배치했습니다.</p>
+            <p>Business 요금제가 <span class="highlight">"가장 많이 선택"</span>으로 강조되며 브랜드 그라데이션 배경을 적용했습니다. 가격 앵커링으로 중간 요금제가 가장 합리적인 선택으로 느껴지게 설계되었습니다.</p>
+          </div>
+          <div class="impact-row">
+            <div class="impact-item">
+              <div class="impact-label">예상 전환율 영향</div>
+              <div class="impact-value up">+15-30%</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">구현 난이도</div>
+              <div class="impact-value neutral">보통</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">이의 처리 점수</div>
+              <div class="impact-value up">3 → 8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ CHANGE 8: CTA Hierarchy ═══ -->
+      <div class="change-card" id="change-8">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-number mid">8</div>
+          <div class="card-title-group">
+            <div class="card-title">CTA 체계 표준화</div>
+            <div class="card-subtitle">감사 즉시적용 #6 · 전환</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-quick">즉시 적용</span>
+            <span class="tag tag-copy">카피</span>
+          </div>
+          <svg class="card-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="comparison-row">
+            <div class="comp-col">
+              <div class="comp-label before">● 변경 전 (9개의 경쟁하는 CTA)</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/original/section-02.png" alt="Original CTAs" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+            <div class="comp-col">
+              <div class="comp-label after">● 변경 후 (3단계 체계)</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/new/11-final-cta.png" alt="New CTA section" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+          </div>
+          <div class="analysis">
+            <h4>변경 내용</h4>
+            <p><strong>변경 전:</strong> 9개의 서로 다른 CTA가 혼용됨 — "무료로 시작하기", "지금 가입하면 무료", "소개자료 받기", "도입 문의" 등.</p>
+            <p><strong>변경 후:</strong> 3단계 체계:</p>
+            <ul>
+              <li><strong>주요:</strong> "무료로 시작하기" (브랜드 그라데이션 버튼 → 가입)</li>
+              <li><strong>보조:</strong> "소개자료 받기" / "도입 문의" (글래스 버튼)</li>
+              <li><strong>부가:</strong> "리포트 샘플 보기" (필 고스트 링크)</li>
+            </ul>
+          </div>
+          <div class="impact-row">
+            <div class="impact-item">
+              <div class="impact-label">예상 전환율 영향</div>
+              <div class="impact-value up">+10-15%</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">구현 난이도</div>
+              <div class="impact-value neutral">낮음</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">CTA 점수</div>
+              <div class="impact-value up">4 → 8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ CHANGE 9: Trust Bar ═══ -->
+      <div class="change-card" id="change-9">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-number mid">9</div>
+          <div class="card-title-group">
+            <div class="card-title">신뢰 지표 바</div>
+            <div class="card-subtitle">사회적 증거 강화</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-quick">즉시 적용</span>
+            <span class="tag tag-copy">카피</span>
+          </div>
+          <svg class="card-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="comparison-row">
+            <div class="comp-col">
+              <div class="comp-label before">● 변경 전</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/original/section-03.png" alt="Original social proof" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+            <div class="comp-col">
+              <div class="comp-label after">● 변경 후</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/new/08-testimonials.png" alt="New trust bar + testimonials" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+          </div>
+          <div class="analysis">
+            <h4>변경 내용</h4>
+            <p><strong>변경 전:</strong> "앞서가는 전문가들은 이미 타날리시스를 도입했습니다" — 실질적 내용 없는 사회적 증거 암시.</p>
+            <p><strong>변경 후:</strong> 실제 고객 유형(국내 상위 화학기업, 자율주행 업체, 바이오 대기업, 특허법인)과 데이터바우처 공급기업 자격을 명시한 구체적 신뢰 지표 바.</p>
+          </div>
+          <div class="impact-row">
+            <div class="impact-item">
+              <div class="impact-label">예상 전환율 영향</div>
+              <div class="impact-value up">+5-10%</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">구현 난이도</div>
+              <div class="impact-value neutral">낮음</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">신뢰 점수</div>
+              <div class="impact-value up">4 → 7</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ CHANGE 10: Design Fidelity ═══ -->
+      <div class="change-card" id="change-10">
+        <div class="card-header" onclick="toggleCard(this)">
+          <div class="card-number new-feat">10</div>
+          <div class="card-title-group">
+            <div class="card-title">디자인 시스템 일관성</div>
+            <div class="card-subtitle">65+ CSS 커스텀 속성 · 픽셀 매칭</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-design">디자인</span>
+          </div>
+          <svg class="card-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+        </div>
+        <div class="card-body">
+          <div class="comparison-row">
+            <div class="comp-col">
+              <div class="comp-label before">● 기존 내비게이션</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/original/02-nav.png" alt="Original nav" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+            <div class="comp-col">
+              <div class="comp-label after">● 신규 내비게이션 (픽셀 매칭)</div>
+              <div class="comp-img-wrap">
+                <img src="screenshots/new/02-nav.png" alt="New nav" onclick="openLightbox(this.src)" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Design token showcase -->
+          <div class="analysis">
+            <h4>보존된 디자인 토큰</h4>
+            <p>임의로 만든 디자인 변경은 없습니다. 모든 시각 요소가 추출된 <code>DESIGN-SYSTEM.json</code>에 픽셀 단위로 매칭되었습니다:</p>
+            <ul>
+              <li><strong>폰트:</strong> Pretendard Variable weight <span class="metric">1000</span> (실제 사이트 weight, 700/900이 아님)</li>
+              <li><strong>버튼:</strong> 정확한 <code>12px 18px</code> 패딩, <code>11px</code> 라운드, 라벤더 글로우 그림자</li>
+              <li><strong>색상:</strong> 텍스트 24색, 배경 16색, 그라데이션 17개 모두 원본 그대로 적용</li>
+              <li><strong>애니메이션:</strong> <code>fadeIn 0.5s ease-out</code> 및 <code>buttonPop 1.5s ease-in-out</code></li>
+              <li><strong>간격:</strong> 20종 패딩 시스템과 16종 갭 시스템 정확히 재현</li>
+            </ul>
+          </div>
+
+          <!-- Color palette visualization -->
+          <div style="margin-top:16px; display:grid; grid-template-columns: repeat(auto-fill, minmax(120px,1fr)); gap:8px;">
+            <div style="background:#6541f2; padding:12px 10px; border-radius:8px; text-align:center; font-size:0.7rem; font-weight:700; color:white;">--brand<br/>#6541f2</div>
+            <div style="background:#312080; padding:12px 10px; border-radius:8px; text-align:center; font-size:0.7rem; font-weight:700; color:white;">--brand-deep<br/>#312080</div>
+            <div style="background:#8b6cff; padding:12px 10px; border-radius:8px; text-align:center; font-size:0.7rem; font-weight:700; color:white;">--brand-light<br/>#8b6cff</div>
+            <div style="background:#c29ef0; padding:12px 10px; border-radius:8px; text-align:center; font-size:0.7rem; font-weight:700; color:#1a1c25;">--lavender<br/>#c29ef0</div>
+            <div style="background:#5d50ae; padding:12px 10px; border-radius:8px; text-align:center; font-size:0.7rem; font-weight:700; color:white;">--brand-muted<br/>#5d50ae</div>
+            <div style="background:#0e0e0e; padding:12px 10px; border-radius:8px; text-align:center; font-size:0.7rem; font-weight:700; color:white;">--t-primary<br/>#0e0e0e</div>
+            <div style="background:#f0f1f5; padding:12px 10px; border-radius:8px; text-align:center; font-size:0.7rem; font-weight:700; color:#333;">--bg-light<br/>#f0f1f5</div>
+            <div style="background:#121822; padding:12px 10px; border-radius:8px; text-align:center; font-size:0.7rem; font-weight:700; color:white;">--bg-dark<br/>#121822</div>
+            <div style="background:linear-gradient(140deg,#312080,#6541f2,#c29ef0); padding:12px 10px; border-radius:8px; text-align:center; font-size:0.7rem; font-weight:700; color:white;">--g-brand<br/>gradient</div>
+            <div style="background:#e3e5eb; padding:12px 10px; border-radius:8px; text-align:center; font-size:0.7rem; font-weight:700; color:#333;">--border<br/>#e3e5eb</div>
+          </div>
+
+          <div class="impact-row" style="margin-top:16px;">
+            <div class="impact-item">
+              <div class="impact-label">CSS 커스텀 속성</div>
+              <div class="impact-value" style="color:var(--brand-light);">65+</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">고유 색상</div>
+              <div class="impact-value" style="color:var(--brand-light);">57</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">그라데이션</div>
+              <div class="impact-value" style="color:var(--brand-light);">17</div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-label">추출 방법</div>
+              <div class="impact-value" style="font-size:0.9rem; color:var(--brand-light);">Playwright</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /layout -->
+
+<!-- ═══ LIGHTBOX ═══ -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="Zoomed view" />
+</div>
+
+<script>
+  // ── Card toggle ──
+  function toggleCard(headerEl) {
+    const card = headerEl.closest('.change-card');
+    card.classList.toggle('open');
+  }
+
+  // ── Sidebar navigation ──
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // Highlight active nav on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        document.querySelectorAll('.nav-item').forEach(n => {
+          n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('[id^="change-"], #overview, #fullpage').forEach(el => {
+    observer.observe(el);
+  });
+
+  // ── View toggle (side-by-side vs slider) ──
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const view = this.dataset.view;
+      document.getElementById('view-side').style.display = view === 'side' ? 'grid' : 'none';
+      document.getElementById('view-slider').style.display = view === 'slider' ? 'block' : 'none';
+    });
+  });
+
+  // ── Slider comparison ──
+  document.querySelectorAll('.slider-compare').forEach(slider => {
+    let isDragging = false;
+
+    function updateSlider(x) {
+      const rect = slider.getBoundingClientRect();
+      let pct = ((x - rect.left) / rect.width) * 100;
+      pct = Math.max(2, Math.min(98, pct));
+      slider.querySelector('.slider-overlay').style.width = pct + '%';
+      slider.querySelector('.slider-handle').style.left = pct + '%';
+    }
+
+    slider.addEventListener('mousedown', e => { isDragging = true; updateSlider(e.clientX); });
+    document.addEventListener('mousemove', e => { if (isDragging) updateSlider(e.clientX); });
+    document.addEventListener('mouseup', () => { isDragging = false; });
+
+    slider.addEventListener('touchstart', e => { isDragging = true; updateSlider(e.touches[0].clientX); }, { passive: true });
+    document.addEventListener('touchmove', e => { if (isDragging) updateSlider(e.touches[0].clientX); });
+    document.addEventListener('touchend', () => { isDragging = false; });
+  });
+
+  // ── Lightbox ──
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // ── Open first card by default ──
+  // Already open via class
+</script>
+
+</body>
+</html>
