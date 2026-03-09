@@ -1,0 +1,5168 @@
+{
+  "versions": [
+    "v1",
+    "v2_API",
+    "v3_ClaudeAgentSDK"
+  ],
+  "dirs": [
+    "claim_elements/v1",
+    "claim_elements/v2_API",
+    "claim_elements/v3_ClaudeAgentSDK"
+  ],
+  "decisions": [
+    {
+      "case_id": "D3",
+      "status": "inconsistent",
+      "inconsistency_rate": 1.0,
+      "inconsistent_elements": 5,
+      "total_elements": 5,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.4]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.5]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D8",
+      "status": "inconsistent",
+      "inconsistency_rate": 1.0,
+      "inconsistent_elements": 6,
+      "total_elements": 6,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1a]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1b]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1c]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1d]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1e]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[preamble]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D13",
+      "status": "inconsistent",
+      "inconsistency_rate": 1.0,
+      "inconsistent_elements": 9,
+      "total_elements": 9,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.D]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.E]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.F]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.G]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.H]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D15",
+      "status": "inconsistent",
+      "inconsistency_rate": 1.0,
+      "inconsistent_elements": 9,
+      "total_elements": 9,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[15.A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[15.B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[15.C]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[15.D]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[15.E]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[15.F]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[15.G]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[15.H]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[15.PRE]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D16",
+      "status": "inconsistent",
+      "inconsistency_rate": 1.0,
+      "inconsistent_elements": 4,
+      "total_elements": 4,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "1[a]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "1[b]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "1[c]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "1[pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D18",
+      "status": "inconsistent",
+      "inconsistency_rate": 1.0,
+      "inconsistent_elements": 7,
+      "total_elements": 7,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[5]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[6]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D21",
+      "status": "inconsistent",
+      "inconsistency_rate": 1.0,
+      "inconsistent_elements": 10,
+      "total_elements": 10,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[4a]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4b]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4c]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4d]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4e]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4f]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[4g]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4h]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4i]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D32",
+      "status": "inconsistent",
+      "inconsistency_rate": 1.0,
+      "inconsistent_elements": 9,
+      "total_elements": 9,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.4]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.5]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "unclear",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.6]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.7]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.8]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.9]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D40",
+      "status": "inconsistent",
+      "inconsistency_rate": 1.0,
+      "inconsistent_elements": 7,
+      "total_elements": 7,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[5]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[6]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D47",
+      "status": "inconsistent",
+      "inconsistency_rate": 1.0,
+      "inconsistent_elements": 10,
+      "total_elements": 10,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[4a]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4b]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4c]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4d]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4e]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4f]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[4g]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4h]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4i]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[4pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D50",
+      "status": "inconsistent",
+      "inconsistency_rate": 1.0,
+      "inconsistent_elements": 5,
+      "total_elements": 5,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1C]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1D]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[preamble]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D12",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.909,
+      "inconsistent_elements": 10,
+      "total_elements": 11,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "1[Pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[a]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[b]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "implicitly_disclosed"
+          }
+        },
+        {
+          "label": "1[c]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "implicitly_disclosed"
+          }
+        },
+        {
+          "label": "1[d]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "implicitly_disclosed"
+          }
+        },
+        {
+          "label": "1[e]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "implicitly_disclosed"
+          }
+        },
+        {
+          "label": "1[f]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "implicitly_disclosed"
+          }
+        },
+        {
+          "label": "1[g",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "1[g]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[h]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[i]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D46",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.875,
+      "inconsistent_elements": 7,
+      "total_elements": 8,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "1[a]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "1[b]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "1[c]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "1[d]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "1[e]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "1[f]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "1[pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.f]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D2",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.857,
+      "inconsistent_elements": 6,
+      "total_elements": 7,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "Preamble",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "Preamble:",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.4]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "일부 미개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.5]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D6",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.833,
+      "inconsistent_elements": 5,
+      "total_elements": 6,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.D]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.E]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D39",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.833,
+      "inconsistent_elements": 5,
+      "total_elements": 6,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.0]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.4]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[Partially Filling Limitation]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D41",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.818,
+      "inconsistent_elements": 9,
+      "total_elements": 11,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.0.1 1]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[1.0.1]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.0.2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.0.3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.4]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.5]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.6]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.7]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D62",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.818,
+      "inconsistent_elements": 9,
+      "total_elements": 11,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1a]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1b]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1c]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1d]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "일부 미개시",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1e1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1e2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1e3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미개시",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1f]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "limitation 1d",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "limitation 1e3",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D27",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.8,
+      "inconsistent_elements": 4,
+      "total_elements": 5,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "(a)",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "(b)",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "(c)",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "(d)",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.1]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D34",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.8,
+      "inconsistent_elements": 4,
+      "total_elements": 5,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.not_analyzed]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_reached"
+          }
+        },
+        {
+          "label": "[1a]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1b]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1c]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D45",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.8,
+      "inconsistent_elements": 8,
+      "total_elements": 10,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1C]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1D]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1E]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1F]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1G]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1H]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1PRE 1]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "일부 미개시"
+          }
+        },
+        {
+          "label": "[1PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D31",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.714,
+      "inconsistent_elements": 5,
+      "total_elements": 7,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1A1]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[1A]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1C]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1D]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1E]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1F]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D44",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.667,
+      "inconsistent_elements": 10,
+      "total_elements": 15,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.1]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_reached"
+          }
+        },
+        {
+          "label": "[1.4]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_reached"
+          }
+        },
+        {
+          "label": "[1.5]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.B.i]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.B.ii]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.B.iii]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.B.iv]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.C.i]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.C.ii]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D4",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.625,
+      "inconsistent_elements": 5,
+      "total_elements": 8,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.1]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.D]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.E]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D33",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.625,
+      "inconsistent_elements": 5,
+      "total_elements": 8,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "Limitation 1A",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "Limitation 1C",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "Limitation 1D",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1C]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1D]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1Pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D37",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.6,
+      "inconsistent_elements": 3,
+      "total_elements": 5,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "'wherein' clause of independent claim 1",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": true,
+          "determinations": {
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D5",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.571,
+      "inconsistent_elements": 4,
+      "total_elements": 7,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.0]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "a)     Preamble 1.0",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "b)    Limitation 1.1",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "c)    Limitation 1.2",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D14",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.571,
+      "inconsistent_elements": 4,
+      "total_elements": 7,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.1]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "묵시/간접적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D22",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.556,
+      "inconsistent_elements": 5,
+      "total_elements": 9,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "1C",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "1D",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "1[PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1C]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1D]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1Pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D53",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.545,
+      "inconsistent_elements": 6,
+      "total_elements": 11,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "10.1",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_reached"
+          }
+        },
+        {
+          "label": "10.2",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_reached"
+          }
+        },
+        {
+          "label": "10.4",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "10.5",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_reached"
+          }
+        },
+        {
+          "label": "[10.1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[10.2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[10.3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[10.4]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미개시",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[10.5]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[10.P]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "transfer of tensile load limitations",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D11",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.538,
+      "inconsistent_elements": 7,
+      "total_elements": 13,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.4]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.5]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.6]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.D]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.E]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.F]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D9",
+      "status": "inconsistent",
+      "inconsistency_rate": 0.524,
+      "inconsistent_elements": 11,
+      "total_elements": 21,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "1a",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "1a.i",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "1a.ii",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "1b",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "1b.i",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "1c",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "1c.i",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "1e",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "1e.i",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1a.i]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1a.ii]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1a]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1b.i]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1b]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1c.i]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1c]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1d]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1e.i]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1e]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "preamble",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D49",
+      "status": "partially_inconsistent",
+      "inconsistency_rate": 0.5,
+      "inconsistent_elements": 5,
+      "total_elements": 10,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[a]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[b]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[c]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[d]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[pre]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "a) Preamble",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "b) Recitation 1a",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "c) Recitation 1b",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "d) Recitation 1c",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "e) Recitation 1d",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D51",
+      "status": "partially_inconsistent",
+      "inconsistency_rate": 0.5,
+      "inconsistent_elements": 7,
+      "total_elements": 14,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.a]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.b]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.c]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.d]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.e]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.f]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "a. Preamble",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "b. [a] first source magnetic resonator",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "c. [b] second source magnetic resonator",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "d. [c] device magnetic resonator",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "e. [d] first dipole moment",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "f. [e] second dipole moment",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "g. [f] magnetic field cancellation",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D56",
+      "status": "partially_inconsistent",
+      "inconsistency_rate": 0.5,
+      "inconsistent_elements": 3,
+      "total_elements": 6,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.a]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.b]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.c]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "a) Preamble",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "b) Power Switch",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "c) Power Converter Controller",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D59",
+      "status": "partially_inconsistent",
+      "inconsistency_rate": 0.5,
+      "inconsistent_elements": 9,
+      "total_elements": 18,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "1[a]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[b]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[c]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[d]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[e]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[f]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[g]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[h]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[i]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[a]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[b]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[c]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[d]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[e]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[f]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[g]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[h]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[i]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D61",
+      "status": "partially_inconsistent",
+      "inconsistency_rate": 0.5,
+      "inconsistent_elements": 5,
+      "total_elements": 10,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.a]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.b]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.c]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.d]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.e]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "a)",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "b)",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "c)",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "d)",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "e)",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D1",
+      "status": "partially_inconsistent",
+      "inconsistency_rate": 0.467,
+      "inconsistent_elements": 7,
+      "total_elements": 15,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "1A",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "1B",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "1C",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "1D",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.A.ii]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "[1.B.ii]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "[1A.i]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1A.ii]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1A.iii]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1B.i]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1B.ii]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1B.iii]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1PRE]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D10",
+      "status": "partially_inconsistent",
+      "inconsistency_rate": 0.467,
+      "inconsistent_elements": 7,
+      "total_elements": 15,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.a]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.b]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.c]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.d]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.e]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.f]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.g]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "a. The Preamble",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "b. The Lens Housing Recitation",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "c. The Temple Recitations",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "d. The Electronics Module Recitation",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "e. The Electrical Conductor Recitations",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "f. The Conductive Path Recitations",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "g. The Constrain Recitation",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "h. Conclusion",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D55",
+      "status": "partially_inconsistent",
+      "inconsistency_rate": 0.467,
+      "inconsistent_elements": 7,
+      "total_elements": 15,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "Preamble",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "[1a]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1b]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1c]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1d]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1e]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1f]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1g]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "a) Preamble",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "b) Step [1a]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "c) Step [1b]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "d) Steps [1c], [1d], [1e]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "e) Step [1f]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "f) Step [1g]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D42",
+      "status": "partially_inconsistent",
+      "inconsistency_rate": 0.444,
+      "inconsistent_elements": 4,
+      "total_elements": 9,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.4]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.D]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D26",
+      "status": "partially_inconsistent",
+      "inconsistency_rate": 0.4,
+      "inconsistent_elements": 4,
+      "total_elements": 10,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.4]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.5]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.D]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D60",
+      "status": "partially_inconsistent",
+      "inconsistency_rate": 0.308,
+      "inconsistent_elements": 4,
+      "total_elements": 13,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.A]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.D]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.E]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.PREAMBLE]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.a]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.b]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.c]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.d]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.e]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.pre]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D48",
+      "status": "mostly_consistent",
+      "inconsistency_rate": 0.222,
+      "inconsistent_elements": 2,
+      "total_elements": 9,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_reached"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[1.2] (the \"power islands\" limitation)",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v2_API": "not_reached"
+          }
+        },
+        {
+          "label": "[1.4]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_reached"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D24",
+      "status": "mostly_consistent",
+      "inconsistency_rate": 0.2,
+      "inconsistent_elements": 2,
+      "total_elements": 10,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.1]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[1.4]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": true,
+          "determinations": {
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.D]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.E]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D19",
+      "status": "mostly_consistent",
+      "inconsistency_rate": 0.188,
+      "inconsistent_elements": 3,
+      "total_elements": 16,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "1c-2",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "Independent Claim 1",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1a]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1b]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1c-1]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1c-2]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1c-3]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "전부 미개시",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1d]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1e]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1f]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "a.",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "b.",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "d.",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "e.",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "f.",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D58",
+      "status": "mostly_consistent",
+      "inconsistency_rate": 0.125,
+      "inconsistent_elements": 1,
+      "total_elements": 8,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "\"ones of the plurality of coded bits\"",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "Claim 1 preamble:",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "Claim 1 preamble: “A method for transmitting data represented by a plurality of coded bits”",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "Claims 1 and 4: “[the processor being configured to] perform[ing] a circular shift, with a variable length related to a modulation order and a number of transmissions, on ones of the plurality of coded bits”",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "명시적 개시",
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "Claims 1 and 4: “and transmit[ting] the circularly shifted ones of the plurality of coded bits”",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D25",
+      "status": "mostly_consistent",
+      "inconsistency_rate": 0.077,
+      "inconsistent_elements": 1,
+      "total_elements": 13,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.1]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[1.4]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[1.5]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.D]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.E]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": true,
+          "determinations": {
+            "v1": "미판단",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "a) Disputed Limitation: “Auditing the Device in Accordance with a Security Policy Based at Least in Part on the Audit Data”",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "b) Conclusion Regarding Claim 1",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D7",
+      "status": "consistent",
+      "inconsistency_rate": 0.0,
+      "inconsistent_elements": 0,
+      "total_elements": 12,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "1[PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1[a]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "implicitly_disclosed"
+          }
+        },
+        {
+          "label": "1[b]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "implicitly_disclosed"
+          }
+        },
+        {
+          "label": "1[c]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1a",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "묵시/간접적 개시"
+          }
+        },
+        {
+          "label": "1b",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "1c",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "a) Preamble",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "b) \"electrostatically attracts the particulate matter to the thin film\" (the \"CATCH\" element)",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "implicitly_disclosed"
+          }
+        },
+        {
+          "label": "c) \"holding the particulate matter in place by adjusting the adhesion of the thin film to permit said thin film to stick to the skin or tissue and by adjusting the cohesion of the formulation to provide adequate impermeability to the thin film\" (the \"HOLD\" element)",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "implicitly_disclosed"
+          }
+        },
+        {
+          "label": "d) \"inactivating the particulate matter by adding at least one ingredient that would render said particulate matter harmless\" (the \"KILL\" element)",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D17",
+      "status": "consistent",
+      "inconsistency_rate": 0.0,
+      "inconsistent_elements": 0,
+      "total_elements": 8,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.1]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "the \"power islands\" limitation",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D20",
+      "status": "consistent",
+      "inconsistency_rate": 0.0,
+      "inconsistent_elements": 0,
+      "total_elements": 10,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[26.1]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[26.2]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed"
+          }
+        },
+        {
+          "label": "[26.A]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[26.B]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[26.a]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[26.b]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[26.c]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[26.d]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[26.e]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[26.pre]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D28",
+      "status": "consistent",
+      "inconsistency_rate": 0.0,
+      "inconsistent_elements": 0,
+      "total_elements": 9,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.not_reached]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_reached"
+          }
+        },
+        {
+          "label": "[13a]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[13b]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "[13c]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[13pre]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1a]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[1b]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[1c]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[1pre]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D30",
+      "status": "consistent",
+      "inconsistency_rate": 0.0,
+      "inconsistent_elements": 0,
+      "total_elements": 22,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "9a",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "9b",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "9c",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "9d",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "9e",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "9f",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_reached",
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "9g",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_disclosed",
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "9h",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "9i",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "9j",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "9k",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "9l",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[9a]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[9b]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[9c]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[9d]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[9e]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[9f]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[9g]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[9h]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[9i]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        },
+        {
+          "label": "[9j]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "미판단"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D38",
+      "status": "consistent",
+      "inconsistency_rate": 0.0,
+      "inconsistent_elements": 0,
+      "total_elements": 12,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "1[a]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "1[b]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "1[c]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_disclosed"
+          }
+        },
+        {
+          "label": "1[d]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "1[e]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "1[f]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[1.D]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "전부 미개시"
+          }
+        },
+        {
+          "label": "[1]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_reached"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D52",
+      "status": "consistent",
+      "inconsistency_rate": 0.0,
+      "inconsistent_elements": 0,
+      "total_elements": 7,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "[1.A]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "not_reached"
+          }
+        },
+        {
+          "label": "[Hwang]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "not_reached"
+          }
+        },
+        {
+          "label": "a) Preamble",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "b) Power Switch",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "c) Power Converter Controller",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D54",
+      "status": "consistent",
+      "inconsistency_rate": 0.0,
+      "inconsistent_elements": 0,
+      "total_elements": 10,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "(a)(i)",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "(a)(ii)",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "(b)",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "2'-O-methyl modification",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "[1.A]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.B]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.C]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.D]",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "[1.PRE]",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed",
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "gRNA functionality",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "D57",
+      "status": "consistent",
+      "inconsistency_rate": 0.0,
+      "inconsistent_elements": 0,
+      "total_elements": 11,
+      "versions_present": [
+        "v1",
+        "v2_API",
+        "v3_ClaudeAgentSDK"
+      ],
+      "elements": [
+        {
+          "label": "1.0",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1.1",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1.2",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "1.3",
+          "inconsistent": false,
+          "determinations": {
+            "v3_ClaudeAgentSDK": "disclosed"
+          }
+        },
+        {
+          "label": "Limitation 1.1",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "Limitation 1.3",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "Preamble 1.0",
+          "inconsistent": false,
+          "determinations": {
+            "v2_API": "disclosed"
+          }
+        },
+        {
+          "label": "[1.0]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "묵시/간접적 개시"
+          }
+        },
+        {
+          "label": "[1.1]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "[1.2]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        },
+        {
+          "label": "[1.3]",
+          "inconsistent": false,
+          "determinations": {
+            "v1": "명시적 개시"
+          }
+        }
+      ]
+    }
+  ]
+}
